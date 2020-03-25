@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BETTER LATE THAN NEVER</title>
+  
+  <subtitle>frosro</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-03-25T14:35:36.551Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>宋十里</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>这是一个测试页面</title>
+    <link href="http://yoursite.com/2020/03/22/firstPage/"/>
+    <id>http://yoursite.com/2020/03/22/firstPage/</id>
+    <published>2020-03-22T09:50:08.000Z</published>
+    <updated>2020-03-25T14:35:36.551Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是第一个测试页&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/03/22/hello-world/"/>
+    <id>http://yoursite.com/2020/03/22/hello-world/</id>
+    <published>2020-03-22T09:19:16.086Z</published>
+    <updated>2020-03-22T09:19:16.086Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
