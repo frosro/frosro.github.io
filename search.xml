@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java</title>
+    <url>/2020/03/26/java/</url>
+    <content><![CDATA[<p>这是java</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>这是一个测试页面</title>
     <url>/2020/03/22/firstPage/</url>
     <content><![CDATA[<p>这是第一个测试页</p>
