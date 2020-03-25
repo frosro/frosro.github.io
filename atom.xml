@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-25T16:36:09.092Z</updated>
+  <updated>2020-03-25T16:52:45.307Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/03/26/java/"/>
     <id>http://yoursite.com/2020/03/26/java/</id>
     <published>2020-03-25T16:19:33.000Z</published>
-    <updated>2020-03-25T16:36:09.092Z</updated>
+    <updated>2020-03-25T16:52:45.307Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;这是java&lt;/p&gt;
+          &lt;p&gt;这是javaDADSAD&lt;/p&gt;
 
         
       
@@ -37,7 +37,7 @@
     </summary>
     
     
-      <category term="手中的磨刀石" scheme="http://yoursite.com/categories/%E6%89%8B%E4%B8%AD%E7%9A%84%E7%A3%A8%E5%88%80%E7%9F%B3/"/>
+      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
     
     
   </entry>
