@@ -19,12 +19,12 @@
       </categories>
   </entry>
   <entry>
-    <title>java</title>
-    <url>/2020/03/26/java/</url>
-    <content><![CDATA[<p>这是javaDADSAD</p>
+    <title>工具类</title>
+    <url>/2020/03/26/tool/</url>
+    <content><![CDATA[<p>这是工具</p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>tool</category>
       </categories>
   </entry>
   <entry>
@@ -37,12 +37,12 @@
       </categories>
   </entry>
   <entry>
-    <title>工具类</title>
-    <url>/2020/03/26/tool/</url>
-    <content><![CDATA[<p>这是工具</p>
+    <title>java</title>
+    <url>/2020/03/26/java/</url>
+    <content><![CDATA[<p>这是javaDADSAD</p>
 ]]></content>
       <categories>
-        <category>tool</category>
+        <category>java</category>
       </categories>
   </entry>
 </search>
