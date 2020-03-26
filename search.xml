@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>java</title>
-    <url>/2020/03/26/java/</url>
-    <content><![CDATA[<p>这是javaDADSAD</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>框架</title>
     <url>/2020/03/26/framework/</url>
     <content><![CDATA[<p>这是框架</p>
@@ -34,6 +25,15 @@
 ]]></content>
       <categories>
         <category>tool</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java</title>
+    <url>/2020/03/26/java/</url>
+    <content><![CDATA[<p>这是javaDADSAD</p>
+]]></content>
+      <categories>
+        <category>java</category>
       </categories>
   </entry>
 </search>
