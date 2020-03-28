@@ -6,7 +6,7 @@
     <content><![CDATA[<p><img src="/img/loading.gif" class="lazyload" data-src="/2020/03/28/photo/01.jpg"  alt="dasd"></p>
 ]]></content>
       <categories>
-        <category>JAVA</category>
+        <category>java</category>
       </categories>
   </entry>
   <entry>
@@ -16,6 +16,15 @@
 ]]></content>
       <categories>
         <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>js首页</title>
+    <url>/2020/03/26/js/</url>
+    <content><![CDATA[<p>这是js</p>
+]]></content>
+      <categories>
+        <category>js</category>
       </categories>
   </entry>
   <entry>
@@ -43,15 +52,6 @@
 ]]></content>
       <categories>
         <category>tool</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>js首页</title>
-    <url>/2020/03/26/js/</url>
-    <content><![CDATA[<p>这是js</p>
-]]></content>
-      <categories>
-        <category>js</category>
       </categories>
   </entry>
 </search>
