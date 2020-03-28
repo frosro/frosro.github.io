@@ -6,7 +6,7 @@
     <content><![CDATA[<p><img src="/img/loading.gif" class="lazyload" data-src="/2020/03/28/photo/01.jpg"  alt="dasd"></p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>JAVA</category>
       </categories>
   </entry>
   <entry>
@@ -15,16 +15,16 @@
     <content><![CDATA[<p>java集合框架</p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>JAVA</category>
       </categories>
   </entry>
   <entry>
-    <title>js首页</title>
-    <url>/2020/03/26/js/</url>
-    <content><![CDATA[<p>这是js</p>
+    <title>java</title>
+    <url>/2020/03/26/java/</url>
+    <content><![CDATA[<p>这是javaDADSAD</p>
 ]]></content>
       <categories>
-        <category>js</category>
+        <category>JAVA</category>
       </categories>
   </entry>
   <entry>
@@ -37,12 +37,12 @@
       </categories>
   </entry>
   <entry>
-    <title>java</title>
-    <url>/2020/03/26/java/</url>
-    <content><![CDATA[<p>这是javaDADSAD</p>
+    <title>js首页</title>
+    <url>/2020/03/26/js/</url>
+    <content><![CDATA[<p>这是js</p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>js</category>
       </categories>
   </entry>
   <entry>
