@@ -19,6 +19,15 @@
       </categories>
   </entry>
   <entry>
+    <title>java</title>
+    <url>/2020/03/26/java/</url>
+    <content><![CDATA[<p>这是javaDADSAD</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>js首页</title>
     <url>/2020/03/26/js/</url>
     <content><![CDATA[<p>这是js</p>
@@ -34,15 +43,6 @@
 ]]></content>
       <categories>
         <category>tool</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>java</title>
-    <url>/2020/03/26/java/</url>
-    <content><![CDATA[<p>这是javaDADSAD</p>
-]]></content>
-      <categories>
-        <category>java</category>
       </categories>
   </entry>
 </search>
