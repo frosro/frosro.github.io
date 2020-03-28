@@ -42,31 +42,6 @@
   </entry>
   
   <entry>
-    <title>框架</title>
-    <link href="https://frosro.github.io.com/2020/03/26/framework/"/>
-    <id>https://frosro.github.io.com/2020/03/26/framework/</id>
-    <published>2020-03-25T16:19:33.000Z</published>
-    <updated>2020-03-26T04:32:20.284Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是框架</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这是框架&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="framework" scheme="https://frosro.github.io.com/categories/framework/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>java</title>
     <link href="https://frosro.github.io.com/2020/03/26/java/"/>
     <id>https://frosro.github.io.com/2020/03/26/java/</id>
@@ -92,26 +67,26 @@
   </entry>
   
   <entry>
-    <title>js首页</title>
-    <link href="https://frosro.github.io.com/2020/03/26/js/"/>
-    <id>https://frosro.github.io.com/2020/03/26/js/</id>
+    <title>框架</title>
+    <link href="https://frosro.github.io.com/2020/03/26/framework/"/>
+    <id>https://frosro.github.io.com/2020/03/26/framework/</id>
     <published>2020-03-25T16:19:33.000Z</published>
-    <updated>2020-03-26T04:30:27.645Z</updated>
+    <updated>2020-03-26T04:32:20.284Z</updated>
     
-    <content type="html"><![CDATA[<p>这是js</p>]]></content>
+    <content type="html"><![CDATA[<p>这是框架</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;这是js&lt;/p&gt;
+        &lt;p&gt;这是框架&lt;/p&gt;
 
       
     
     </summary>
     
     
-      <category term="js" scheme="https://frosro.github.io.com/categories/js/"/>
+      <category term="framework" scheme="https://frosro.github.io.com/categories/framework/"/>
     
     
   </entry>
@@ -137,6 +112,31 @@
     
     
       <category term="tool" scheme="https://frosro.github.io.com/categories/tool/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js首页</title>
+    <link href="https://frosro.github.io.com/2020/03/26/js/"/>
+    <id>https://frosro.github.io.com/2020/03/26/js/</id>
+    <published>2020-03-25T16:19:33.000Z</published>
+    <updated>2020-03-26T04:30:27.645Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是js</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是js&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://frosro.github.io.com/categories/js/"/>
     
     
   </entry>
