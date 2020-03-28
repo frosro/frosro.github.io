@@ -16,12 +16,12 @@
       </categories>
   </entry>
   <entry>
-    <title>js首页</title>
-    <url>/2020/03/26/js/</url>
-    <content><![CDATA[<p>这是js</p>
+    <title>框架</title>
+    <url>/2020/03/26/framework/</url>
+    <content><![CDATA[<p>这是框架</p>
 ]]></content>
       <categories>
-        <category>js</category>
+        <category>framework</category>
       </categories>
   </entry>
   <entry>
@@ -34,12 +34,12 @@
       </categories>
   </entry>
   <entry>
-    <title>框架</title>
-    <url>/2020/03/26/framework/</url>
-    <content><![CDATA[<p>这是框架</p>
+    <title>js首页</title>
+    <url>/2020/03/26/js/</url>
+    <content><![CDATA[<p>这是js</p>
 ]]></content>
       <categories>
-        <category>framework</category>
+        <category>js</category>
       </categories>
   </entry>
   <entry>
