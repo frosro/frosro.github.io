@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title>我的第一篇博文</title>
+    <url>/2020/03/28/myfirstPage/</url>
+    <content><![CDATA[<p>我的个人博客算是建立了，中间遇到比较坑的就是，我想要使用java做分类，但总是报404，但是JAVA却可以，没找到原因；还有就是阿里云的域名真的是坑，提交了十几个实名认证还是没通过，太考验耐心了。markdown还不太会用，渐渐熟练吧，之后我会把遇到的好的经验分享到这个博客，其他教程什么的网上太多了，我就不在这上面添加了，我只写我认为有价值的博文，如果哪位同学有问题或者想要和我在技术上交流，可以联系我，我会非常乐意分享我所知道的信息。大家一起学习，共同进步为社会主义做贡献！</p>
+]]></content>
+      <categories>
+        <category>🐟台小记</category>
+      </categories>
+      <tags>
+        <tag>历史</tag>
+      </tags>
+  </entry>
 </search>
