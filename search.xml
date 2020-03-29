@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JAVA集合的多种遍历方式总结</title>
+    <url>/2020/03/29/JAVA%E9%9B%86%E5%90%88%E7%9A%84%E5%A4%9A%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<ol>
+<li>Collection 集合 :  总的来说分为以下这三类，这里更多的子类我便不在阐述了。</li>
+</ol>
+<ul>
+<li>Set ： 无序集合，元素不可重复；</li>
+<li>Queue  ： 队列；</li>
+<li>List ： 有序集合，元素可以重复；</li>
+</ul>
+<ol start="2">
+<li>Map集合 ：一般用于保存拥有映射关系的数据，也就是 key-value 键值对，它也有很多子类，这里不细说；</li>
+</ol>
+<hr>
+<p>本文以HashSet 为例，总结遍历方式。当然像List这种有序集合还可以通过for循环的方式遍历。</p>
+<p><strong>下面是主要内容：</strong></p>
+<h3 id="一、使用-Lambda-表达式遍历集合"><a href="#一、使用-Lambda-表达式遍历集合" class="headerlink" title="一、使用 Lambda 表达式遍历集合"></a>一、使用 Lambda 表达式遍历集合</h3><p>从 JDK8 开始，Iterable 接口新增了 forEach(Consumer action)方法，主要 是使用 Lambda 表达式更加简洁的操作。Consumer 其实是一个函数式接 口，只要是函数式接口，都能够使用 Lambda 表示来进行替代。在调用这 个方法的时候，其实会依次将集合的元素传递给 Consumer 中的 accept(T t) 方法去处理。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 21:34</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class CollectionEach &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        HashSet&lt;String&gt; books &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">        books.add(&quot;编程思想&quot;);</span><br><span class="line">        books.add(&quot;核心技术&quot;);</span><br><span class="line">        books.add(&quot;从入门到放弃&quot;);</span><br><span class="line">        books.forEach(str -&gt; System.out.println(&quot;书名：&quot;  + str));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、-使用-Iterator-遍历集合元素"><a href="#二、-使用-Iterator-遍历集合元素" class="headerlink" title="二、 使用 Iterator 遍历集合元素"></a>二、 使用 Iterator 遍历集合元素</h3><p>Iterator 主要用来遍历 Conllection 集合中的元素，也叫迭代器。它只能用于遍历集合。</p>
+<p>常用方法如下：</p>
+<ul>
+<li>hasNext()：判断集合中还有没有元素，如果有则返回 true。 </li>
+<li>next()：取出集合中的下一个元素。 </li>
+<li>remove()：移除上面 next() 方法中读取的元素。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 21:48</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class IteratorTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        HashSet&lt;String&gt; books &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">        books.add(&quot;编程思想&quot;);</span><br><span class="line">        books.add(&quot;核心技术&quot;);</span><br><span class="line">        books.add(&quot;从入门到放弃&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 通过 iterator() 方法，获取 books 集合对应的迭 代器</span><br><span class="line">        Iterator&lt;String&gt; iterator &#x3D; books.iterator();</span><br><span class="line"></span><br><span class="line">        while (iterator.hasNext())&#123;</span><br><span class="line">            String next &#x3D; iterator.next();</span><br><span class="line">            System.out.println(next);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 对 next 变量赋值，不会改变集合元素本身</span><br><span class="line">            &#x2F;&#x2F; Iterator 并不会把集合元素本身交给迭代变 量，</span><br><span class="line">            &#x2F;&#x2F; 而是把集合元素的值交给了迭代变量</span><br><span class="line">            &#x2F;&#x2F; 所以在修改迭代变量的值之后对集合远古三本身并 没有任何覆盖。</span><br><span class="line">            next &#x3D; &quot;设计模式&quot;;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 如果我们在使用迭代器的过程中改变了集合元素的值，也就是books,比如</span><br><span class="line">            &#x2F;&#x2F; books.remove(next);</span><br><span class="line">            &#x2F;&#x2F; 上面这行代码运行会报 ConcurrentModificationException 异常</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(books);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本质上，是因为 Iterator 迭代器使用了 fail-fast 机制（快速失败机制）， 在迭代过程中一旦发现有其他线程来修改该集合，则马上报 ConcurrentModicationException 异常，这样做可以避免共享资源而埋下其他隐患问题。</p>
+<h3 id="三、-使用-Lambda-表达式遍历-Iterator"><a href="#三、-使用-Lambda-表达式遍历-Iterator" class="headerlink" title="三、 使用 Lambda 表达式遍历 Iterator"></a>三、 使用 Lambda 表达式遍历 Iterator</h3><p>核心方法：</p>
+<ul>
+<li>forEachRemaining()：JDK8 新增方法，使用 Lambda 表达式来遍历集合元素。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 22:06</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class IteratorEach &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        HashSet&lt;String&gt; books &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">        books.add(&quot;编程思想&quot;);</span><br><span class="line">        books.add(&quot;核心技术&quot;);</span><br><span class="line">        books.add(&quot;从入门到放弃&quot;);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iterator &#x3D; books.iterator();</span><br><span class="line"></span><br><span class="line">        iterator.forEachRemaining(str -&gt; System.out.println(&quot;迭代集合元素：&quot; + str));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、-使用-foreach-循环遍历集合元素"><a href="#四、-使用-foreach-循环遍历集合元素" class="headerlink" title="四、  使用 foreach 循环遍历集合元素"></a>四、  使用 foreach 循环遍历集合元素</h3><p>foreach 循环，是我们常用的一种遍历方式。另外，foreach 循环中迭代变量也不是集合元素本身，其实也是把每个集合元素的值赋给了迭代变量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 22:13</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ForeachTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        HashSet&lt;String&gt; books &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">        books.add(&quot;编程思想&quot;);</span><br><span class="line">        books.add(&quot;核心技术&quot;);</span><br><span class="line">        books.add(&quot;从入门到放弃&quot;);</span><br><span class="line"></span><br><span class="line">        for (String book : books) &#123;</span><br><span class="line">            System.out.println(book);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 改变book的值，并不会改变books集合的数据</span><br><span class="line">            &#x2F;&#x2F; 因为book只是保存着books其中的一个值</span><br><span class="line">            book &#x3D; &quot;设计模式&quot;;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 同样的，我们也不能在遍历时改变原有的集合books</span><br><span class="line">            &#x2F;&#x2F; 如果像下面这种方式，会报 ConcurrentModificationException</span><br><span class="line">            &#x2F;&#x2F; books.remove(book);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(books);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五、-使用-Stream遍历集合"><a href="#五、-使用-Stream遍历集合" class="headerlink" title="五、  使用 Stream遍历集合"></a>五、  使用 Stream遍历集合</h3><p>JDK8 新增了 Stream、IntStream、LongStream、DoubleStream 等强悍的 流式 API，代表多个支持串行 &amp; 并行聚集操作的元素。还可以通过特别提 供的 Builder 来创建对应的流。</p>
+<p>使用步骤：</p>
+<p> 1）使用 Stream 或 XxxStream 的 builder() 方法初始化对应 的 Builder。<br>2）多次调用 Builder 的 add() 方法，添加元素<br>3）调用 Builder 的 build() 方法获取对应的 Stream。<br>4）调用 Stream 的聚集方法。（具体参考 API 文档）</p>
+<p>Stream 提供了很多方法，可以归类为两种：</p>
+<ul>
+<li>Intermediate（中间方法）<br>中间方法，指的是中间操作允许流保持打开状态，并允许直接调用后续方 法，中间方法的返回值是另外一个流。</li>
+<li>Terminal（末端方法）<br>末端方法，指的是对流的终操作，执行过后，该流就会被“消耗”且不再可用。因为我们在操作的时候，是在内存中的缓存中，如果操作完毕，它将会从缓冲中刷新flush() 出来，就不能再改了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 22:29</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class IntStreamTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">       Stream stream &#x3D; Stream.builder()</span><br><span class="line">               .add(&quot;编程思想&quot;)</span><br><span class="line">                .add(&quot;核心技术&quot;)</span><br><span class="line">                .add(&quot;从入门到放弃&quot;).build();</span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F; 当然，这里不可避免的用到了forEach</span><br><span class="line">       stream.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者是这样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author frosro</span><br><span class="line"> * @data 22:29</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class IntStreamTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        HashSet&lt;String&gt; books &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">        books.add(&quot;编程思想&quot;);</span><br><span class="line">        books.add(&quot;核心技术&quot;);</span><br><span class="line">        books.add(&quot;从入门到放弃&quot;);</span><br><span class="line"></span><br><span class="line">        books.stream().forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能你会觉得这和第一种方式很像，我测试了一下，这两者效率也相差无几。<br>但是stream流却是目前必须掌握的方式。因为它的一些其他用法都颇为重要。</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>循环</tag>
+        <tag>集合</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的第一篇博文</title>
     <url>/2020/03/28/myfirstPage/</url>
     <content><![CDATA[<p>我的个人博客算是建立了，中间遇到比较坑的就是，我想要使用java做分类，但总是报404，但是JAVA却可以，没找到原因；还有就是阿里云的域名真的是坑，提交了十几个实名认证还是没通过，太考验耐心了。markdown还不太会用，渐渐熟练吧，之后我会把遇到的好的经验分享到这个博客，其他教程什么的网上太多了，我就不在这上面添加了，我只写我认为有价值的博文，如果哪位同学有问题或者想要和我在技术上交流，可以联系我，我会非常乐意分享我所知道的信息。大家一起学习，共同进步为社会主义做贡献！</p>
