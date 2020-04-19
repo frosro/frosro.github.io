@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2020-04-13T15:38:00.775Z</updated>
+  <updated>2020-04-19T09:23:47.270Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lambda表达式常见应用场景</title>
+    <link href="https://frosro.github.io/2020/04/19/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    <id>https://frosro.github.io/2020/04/19/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</id>
+    <published>2020-04-19T07:14:47.000Z</published>
+    <updated>2020-04-19T09:23:47.270Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="Lambda" scheme="https://frosro.github.io/tags/Lambda/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA反射机制</title>
