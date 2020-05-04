@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>部署web到Tomcat的三种方式</title>
+    <url>/2020/05/04/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>这里简单的记录tomcat的部署方式：</p>
+<p>一、 直接将 web 项目文件（一般是复制生成的war包）复制到tomcat的webapps目录中 ；</p>
+<p>二、在tomcat中的conf目录下的server.xml文件中，在<Host>节点中添加一个context，具体为：</Host></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">Path</span>=<span class="string">""</span> <span class="attr">Docbase</span>=<span class="string">"目标目录位置"</span> <span class="attr">Debug</span>=<span class="string">"0"</span> <span class="attr">Privileged</span>=<span class="string">"True"</span> <span class="attr">Reloadable</span>=<span class="string">"True"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 Reloadable= “true” 这个属性是指tomcat在运行状态下会自动检测应用程序的WEB-INF/classes和WEB-INF/lib目录下的class文件，如果监测到有class文件有改动，服务器自动加载新的web应用程序，可以在不重起tomcat的情况下改变应用程序，也就是热部署；</p>
+<p>一般我们会在开发阶段将Reloadable属性设为true，有助于调试servlet和其它的class文件，但是由于这样会增加服务器的运行负荷，损耗系统性能，在项目运行阶段建议将它设为false。</p>
+<p>三、直接将编译后的项目复制到webapps中，直接访问</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lambda表达式常见应用场景</title>
     <url>/2020/04/19/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<h3 id="一、集合中的使用"><a href="#一、集合中的使用" class="headerlink" title="一、集合中的使用"></a>一、集合中的使用</h3><ul>

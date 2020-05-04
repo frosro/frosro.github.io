@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2020-04-19T09:23:47.270Z</updated>
+  <updated>2020-05-04T03:34:47.949Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>部署web到Tomcat的三种方式</title>
+    <link href="https://frosro.github.io/2020/05/04/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://frosro.github.io/2020/05/04/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-05-04T03:01:35.000Z</published>
+    <updated>2020-05-04T03:34:47.949Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="Tomcat" scheme="https://frosro.github.io/tags/Tomcat/"/>
+    
+  </entry>
   
   <entry>
     <title>Lambda表达式常见应用场景</title>
