@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>事务传播行为与事务隔离级别</title>
+    <url>/2020/06/04/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA%E4%B8%8E%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h4 id="事务读传播行为"><a href="#事务读传播行为" class="headerlink" title="事务读传播行为"></a>事务读传播行为</h4><h6 id="·-保证同一个事务中"><a href="#·-保证同一个事务中" class="headerlink" title="· 保证同一个事务中"></a>· 保证同一个事务中</h6><p>PROPAGATION_REQUIRED支持当前事务，如果不存在，就新建一个（默认）<br>PROPAGATION_SUPPORTS支持当前事务，如果不存在，就不适用事务<br>PROPAGATION_MANDATORY 支持当前事务，如果不存在，抛出异常</p>
+<h6 id="·-保证没有在同一个事务中"><a href="#·-保证没有在同一个事务中" class="headerlink" title="· 保证没有在同一个事务中"></a>· 保证没有在同一个事务中</h6><p>PROPAGATION_REQUIRES_NEW如果有事务存在，挂起当前事务，创建一个新的事务<br>PROPAGATION_NOT_SUPPORTED 以非事务方式运行，如果有事务存在，挂起当前事务<br>PROPAGATION_NEVER 以非事务方式运行，如果有事务存在，抛出异常<br>PROPAGATION_NESTED 如果当前事务存在，则嵌套事务执行</p>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><p>DEFAULT这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别；</p>
+<h6 id="未提交读（read-uncommitted）："><a href="#未提交读（read-uncommitted）：" class="headerlink" title="未提交读（read uncommitted）："></a>未提交读（read uncommitted）：</h6><p>​    事务的修改，即使当前事务没有被提交，对其他事务而言也是可见的。事务可以读取未提交的数据，也称为脏读。这个级别会导致很多问题，性能上也不比其他级别好多少，一般不会使用；</p>
+<h6 id="已提交读（read-committed）："><a href="#已提交读（read-committed）：" class="headerlink" title="已提交读（read committed）："></a>已提交读（read committed）：</h6><p>​    大部分数据库系统的默认隔离级别都是read committed（Mysql 不是），它表示一个事务只能看到已经提交的事务所做的修改。换个角度来讲，就是一个事务从开始到提交之前，所做的操作对别的操作都是不可见的。此隔离级别也被称为（<strong>不可重复读</strong>），因为多次执行同样的查询语句，可能会得出不一样的结果，因为可能有别的事务提交了。</p>
+<h6 id="可重复读（repeatable-read）："><a href="#可重复读（repeatable-read）：" class="headerlink" title="可重复读（repeatable read）："></a>可重复读（repeatable read）：</h6><p>​    repeatable read解决了脏读的问题，该隔离级别保证了在同一个事务中每次读取都是同样的结果，但是还是无法解决幻读的问题。（<strong>幻读：</strong>指的是当某个事务在读取某个范围内的记录时，另一个事务又在该范围内插入了新的记录，当之前的事务再读取该范围内的记录时，会产生幻行；）【这是高性能Mysql中的解释，我的个人理解为：先读取的事务读不到后来新添加的记录，导致读取不准确】。但InnoDB和XtraDB存储引擎通过多版本并发控制（MVCC）解决了幻读的问题，后面我会详细写到。</p>
+<h6 id="可串行化的（serializable）："><a href="#可串行化的（serializable）：" class="headerlink" title="可串行化的（serializable）："></a>可串行化的（serializable）：</h6><p>强制事务串行执行，由于可能会导致大量的超时和锁争用，通常不考虑。<br>MySQL默认：可重复读<br>Oracle默认：已提交读</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>事务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>servlet学习笔记</title>
+    <url>/2020/05/04/servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="1-Tomcat主要在程序中做了些什么？"><a href="#1-Tomcat主要在程序中做了些什么？" class="headerlink" title="1.Tomcat主要在程序中做了些什么？"></a>1.Tomcat主要在程序中做了些什么？</h3><p>1.1  创建socket监听在对应的端口</p>
+<p>1.2  维护一个线程池</p>
+<p>1.3  当有TCP连接时分配一个线程来处理</p>
+<p>1.4  从TCP连接中读取数据</p>
+<p>1.5  按照HTTP协议解析数据</p>
+<p>1.6  将解析后的数据包封装到request对象中</p>
+<p>1.7  按照web.xml的映射关系找到对应的Servlet类</p>
+<p>1.8  将最后的执行结果response组装成HTTP协议格式的数据包</p>
+<p>1.9  重新通过TCP返回给客户端</p>
+<h3 id="2-访问servlet-的过程"><a href="#2-访问servlet-的过程" class="headerlink" title="2.访问servlet 的过程"></a>2.访问servlet 的过程</h3><p>2.1  connector 负责监听端⼝,当有链接进来时分配线程并实例化HttpllProcessor对数据进⾏ HTTP协议解析,然后将请求交给其所在的engine即Catalina来处理,处理的是域名对应的ip和 端⼝8080 ,注意localhost任然没被使⽤ </p>
+<p>2.2  engine将从HTTP请求头中获取host参数⽤于选择⼀个匹配的Host   处理的是主机名 localhost(Host可以配置多个,即你可以在⼀台电脑上部署两个完全不相关的web项⽬例如jd 和百度),此时处理的是域名即localhost</p>
+<p>2.3  Host将在Context中查找匹配第⼀级路径的Context(web项⽬)   处理的是第⼀级路径(ServletLesson)</p>
+<p>2.4  读取ServletLesson项⽬的web.xml配置,查找匹配TestServlet的Servlet</p>
+<p>2.5  实例化Servlet,调⽤Service根据请求类型执⾏对应的Get或Post ,处理的真正的客户端请求</p>
+<p>2.6  Servlet响应⽅法执⾏完毕后,响应数据依次返回-&gt;Context-&gt;Host-&gt;engine-&gt;connector</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Tomcat</tag>
+        <tag>Servlet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署web到Tomcat的三种方式</title>
     <url>/2020/05/04/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<p>这里简单的记录tomcat的部署方式：</p>
