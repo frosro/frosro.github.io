@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2020-07-04T13:44:53.867Z</updated>
+  <updated>2020-07-05T23:50:03.984Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>容器小记</title>
-    <link href="https://frosro.github.io/2020/07/04/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/"/>
-    <id>https://frosro.github.io/2020/07/04/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/</id>
-    <published>2020-07-04T05:30:37.000Z</published>
-    <updated>2020-07-04T13:44:53.867Z</updated>
+    <title>CAS和Synchronized的区别</title>
+    <link href="https://frosro.github.io/2020/07/05/CAS%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>https://frosro.github.io/2020/07/05/CAS%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2020-07-05T00:36:38.000Z</published>
+    <updated>2020-07-05T23:50:03.984Z</updated>
     
     <summary type="html">
     
@@ -36,7 +36,36 @@
     </summary>
     
     
-      <category term="JAVA" scheme="https://frosro.github.io/categories/JAVA/"/>
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="锁" scheme="https://frosro.github.io/tags/%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>容器小记</title>
+    <link href="https://frosro.github.io/2020/07/04/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://frosro.github.io/2020/07/04/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/</id>
+    <published>2020-07-04T05:30:37.000Z</published>
+    <updated>2020-07-05T00:34:51.890Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
     
     
       <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>

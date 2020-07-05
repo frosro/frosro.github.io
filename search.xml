@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CAS和Synchronized的区别</title>
+    <url>/2020/07/05/CAS%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md" target="_blank" rel="noopener">更多资源</a>：<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md</a></p>
+<h3 id="一、CAS"><a href="#一、CAS" class="headerlink" title="一、CAS"></a>一、CAS</h3><h5 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h5><p> CAS（Compare And Swap ) 或（ Compare-and-Set ）是乐观锁的一种实现方式，是一种轻量级锁。JAVA1.5开始引入了CAS，JUC下很多工具类都是基于CAS。 </p>
+<h5 id="CAS的实现方式"><a href="#CAS的实现方式" class="headerlink" title="CAS的实现方式:"></a><strong>CAS的实现方式:</strong></h5><p> CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。当多个线程同时尝试使用CAS更新一个变量时，任何时候只有一个线程可以更新成功，若更新失败，线程会重新进入循环再次进行尝试。 </p>
+<h5 id="CAS带来的问题"><a href="#CAS带来的问题" class="headerlink" title="CAS带来的问题"></a>CAS带来的问题</h5><h6 id="ABA问题-："><a href="#ABA问题-：" class="headerlink" title="ABA问题 ："></a><strong>ABA问题</strong> ：</h6><p>ABA问题是指在CAS操作时，其他线程将变量值A改为了B，但是又被改回了A，等到本线程使用期望值A与当前变量进行比较时，发现变量A没有变，于是CAS就将A值进行了交换操作，但是实际上该值已经被其他线程改变过，这与乐观锁的设计思想不符合。ABA问题的解决思路是，每次变量更新的时候把变量的版本号加1，那么A-B-A就会变成A1-B2-A3，只要变量被某一线程修改过，改变量对应的版本号就会发生递增变化，从而解决了ABA问题。在JDK的java.util.concurrent.atomic包中提供了AtomicStampedReference来解决ABA问题，该类的compareAndSet是该类的核心方法，实现如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(V   expectedReference,</span></span></span><br><span class="line"><span class="function"><span class="params">                            V   newReference,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="keyword">int</span> expectedStamp,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="keyword">int</span> newStamp)</span> </span>&#123;</span><br><span class="line">   Pair&lt;V&gt; current = pair;</span><br><span class="line">   <span class="keyword">return</span></span><br><span class="line">       expectedReference == current.reference &amp;&amp;</span><br><span class="line">       expectedStamp == current.stamp &amp;&amp;</span><br><span class="line">       ((newReference == current.reference &amp;&amp;</span><br><span class="line">         newStamp == current.stamp) ||</span><br><span class="line">        casPair(current, Pair.of(newReference, newStamp)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以发现，该类检查了当前引用与当前标志是否与预期相同，如果全部相等，才会以原子方式将该引用和该标志的值设为新的更新值，这样CAS操作中的比较就不依赖于变量的值了。</p>
+<h3 id="二、synchronized"><a href="#二、synchronized" class="headerlink" title="二、synchronized"></a>二、synchronized</h3><p>相比于CAS基于乐观锁实现，synchronized是基于悲观锁的，当一个线程试图访问同步代码块时，它首先必须得到锁，退出或抛出异常时必须释放锁。</p>
+<ul>
+<li>对于普通同步方法加锁时，锁是当前实例对象</li>
+<li>对于静态同步方法加锁时，锁是当前类的Class对象</li>
+<li>对于同步方法块加锁时，锁是Synchonized括号里配置的对象</li>
+</ul>
+<h5 id="Synchronized的实现方式："><a href="#Synchronized的实现方式：" class="headerlink" title="Synchronized的实现方式："></a><strong>Synchronized的实现方式：</strong></h5><p>Synchonized是基于进入和退出Monitor对象来实现方法同步和代码块同步，但两者的实现细节不一样。Synchronized 用在方法上时，在字节码中是通过方法的 ACC_SYNCHRONIZED 标志来实现的。而代码块同步则是使用monitorenter和monitorexit指令实现的。</p>
+<p>monitorenter指令是在编译后插入到同步代码块的开始位置，而monitorexit是插入到方法结束处和异常处，JVM要保证每个monitorenter必须有对应的monitorexit与之配对。任何对象都有一个monitor与之关联，当且一个monitor被持有后，它将处于锁定状态。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor的所有权，即尝试获得对象的锁，当获得对象的monitor以后，monitor内部的计数器就会自增（初始为0），当同一个线程再次获得monitor的时候，计数器会再次自增。当同一个线程执行monitorexit指令的时候，计数器会进行自减，当计数器为0的时候，monitor就会被释放，其他线程便可以获得monitor。</p>
+<h5 id="Synchronized的优化："><a href="#Synchronized的优化：" class="headerlink" title="Synchronized的优化："></a><strong>Synchronized的优化：</strong></h5><p>Java SE 1.6为了减少获得锁和释放锁带来的性能消耗，引入了“偏向锁”和“轻量级锁”，在Java SE 1.6中，锁一共有4种状态，级别从低到高依次是：无锁状态、偏向锁状态、轻量级锁状态和重量级锁状态。</p>
+<h5 id="偏向锁："><a href="#偏向锁：" class="headerlink" title="偏向锁："></a><strong>偏向锁：</strong></h5><p>当一个线程访问同步块并获取锁时，会在对象头和栈帧中的锁记录里存储锁偏向的线程ID，以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁，只需简单地测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁。如果测试成功，表示线程已经获得了锁。如果测试失败，则需要再测试一下Mark Word中偏向锁的标识是否设置成1（表示当前是偏向锁），如果没有设置，则使用CAS竞争锁；如果设置了，则尝试使用CAS将对象头的偏向锁指向当前线程。</p>
+<h5 id="轻量级锁："><a href="#轻量级锁：" class="headerlink" title="轻量级锁："></a><strong>轻量级锁：</strong></h5><p>线程在执行同步块之前，JVM会先在当前线程的栈桢中创建用于存储锁记录的空间，并将对象头中的Mark Word复制到锁记录中。然后线程尝试使用CAS将对象头中的Mark Word替换为指向锁记录的指针。如果成功，当前线程获得锁，如果失败，表示其他线程竞争锁，当前线程便尝试使用自旋来获取锁。</p>
+<h5 id="重量级锁："><a href="#重量级锁：" class="headerlink" title="重量级锁："></a><strong>重量级锁：</strong></h5><p>重量级锁是依赖对象内部的monitor锁来实现。当系统检查到锁是重量级锁之后，会把等待想要获得锁的线程进行阻塞，被阻塞的线程不会消耗cup。但是阻塞或者唤醒一个线程时，都需要操作系统来帮忙，需要从用户态转换到内核态，而转换状态是需要消耗很多时间。</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>锁</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>容器小记</title>
     <url>/2020/07/04/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/</url>
     <content><![CDATA[<h5 id="容器中的设计模式："><a href="#容器中的设计模式：" class="headerlink" title="容器中的设计模式："></a>容器中的设计模式：</h5><ol>
@@ -150,7 +181,7 @@
 
 ]]></content>
       <categories>
-        <category>JAVA</category>
+        <category>🐺JAVA</category>
       </categories>
       <tags>
         <tag>JAVA</tag>
