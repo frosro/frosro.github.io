@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2020-07-16T00:32:07.924Z</updated>
+  <updated>2020-07-16T15:14:48.770Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java容器</title>
+    <link href="https://frosro.github.io/2020/07/16/java%E5%AE%B9%E5%99%A8/"/>
+    <id>https://frosro.github.io/2020/07/16/java%E5%AE%B9%E5%99%A8/</id>
+    <published>2020-07-16T15:09:31.000Z</published>
+    <updated>2020-07-16T15:14:48.770Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="容器" scheme="https://frosro.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>java基础知识总结</title>
