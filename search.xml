@@ -74,7 +74,7 @@
 <h4 id="12-普通类和抽象类有哪些区别？"><a href="#12-普通类和抽象类有哪些区别？" class="headerlink" title="12. 普通类和抽象类有哪些区别？"></a><strong>12.</strong> <strong>普通类和抽象类有哪些区别？</strong></h4><p>·    普通类不能包含抽象方法，抽象类可以包含抽象方法。</p>
 <p>·    抽象类不能直接实例化，普通类可以直接实例化。</p>
 <h4 id="13-抽象类能使用-final-修饰吗？"><a href="#13-抽象类能使用-final-修饰吗？" class="headerlink" title="13. 抽象类能使用 final 修饰吗？"></a><strong>13.</strong> <strong>抽象类能使用</strong> <strong>final</strong> <strong>修饰吗？</strong></h4><p>不能，定义抽象类就是让其他类继承的，如果定义为 final 该类就不能被继承，这样彼此就会产生矛盾，所以 final 不能修饰抽象类，如下图所示，编辑器也会提示错误信息：</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="/2020/07/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%5Cimg.png"  alt="图1"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/2020/07/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/img.png"  alt="图1"></p>
 <h4 id="14-接口和抽象类有什么区别？"><a href="#14-接口和抽象类有什么区别？" class="headerlink" title="14. 接口和抽象类有什么区别？"></a><strong>14.</strong> <strong>接口和抽象类有什么区别？</strong></h4><p>·    实现：抽象类的子类使用 extends 来继承；接口必须使用 implements 来实现接口。</p>
 <p>·    构造函数：抽象类可以有构造函数；接口不能有。</p>
 <p>·    实现数量：类可以实现很多个接口；但是只能继承一个抽象类。</p>
