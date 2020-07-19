@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>java容器</title>
+    <title>java容器知识检验</title>
     <url>/2020/07/16/java%E5%AE%B9%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</url>
     <content><![CDATA[<h4 id="18-Java-容器都有哪些？"><a href="#18-Java-容器都有哪些？" class="headerlink" title="18. Java 容器都有哪些？"></a><strong>18. Java</strong> <strong>容器都有哪些？</strong></h4><p>Java 容器分为 Collection 和 Map 两大类，其下又有很多子类，如下所示：</p>
 <p>·    Collection</p>
@@ -77,7 +77,7 @@
       </tags>
   </entry>
   <entry>
-    <title>java基础知识总结</title>
+    <title>java基础知识检验</title>
     <url>/2020/07/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</url>
     <content><![CDATA[<h4 id="1-JDK-和-JRE-有什么区别？"><a href="#1-JDK-和-JRE-有什么区别？" class="headerlink" title="1. JDK 和 JRE 有什么区别？"></a><strong>1. JDK</strong> <strong>和</strong> <strong>JRE</strong> <strong>有什么区别？</strong></h4><p>·    JDK：Java Development Kit 的简称，Java 开发工具包，提供了 Java 的开发环境和运行环境。</p>
 <p>·    JRE：Java Runtime Environment 的简称，Java 运行环境，为 Java 的运行提供了所需环境。</p>
