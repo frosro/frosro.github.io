@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java synchronized原理总结</title>
+    <url>/2020/07/26/Java-synchronized%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>我觉得并不会比他写得好：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/29866981" target="_blank" rel="noopener">点击此处</a></p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>锁</tag>
+        <tag>synchronized</tag>
+        <tag>原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java JVM 知识检验</title>
     <url>/2020/07/19/java-JVM-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</url>
     <content><![CDATA[<h4 id="1-说一下-JVM-的主要组成部分？及其作用？"><a href="#1-说一下-JVM-的主要组成部分？及其作用？" class="headerlink" title="1. 说一下 JVM 的主要组成部分？及其作用？"></a><strong>1.</strong> <strong>说一下</strong> <strong>JVM</strong> <strong>的主要组成部分？及其作用？</strong></h4><p>·    类加载器（ClassLoader）</p>
@@ -833,9 +849,7 @@
     <title>Java虚拟机</title>
     <url>/2020/07/06/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
     <content><![CDATA[<p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md#%E4%B8%80%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F" target="_blank" rel="noopener">参考连接</a></p>
-<p>问题一、为什么在执行本地方法时程序计数器为空。</p>
-<p>问题二、 </p>
-<p>（待续）</p>
+<p><a href="https://zhuanlan.zhihu.com/p/29881777" target="_blank" rel="noopener">JVM总结</a></p>
 ]]></content>
       <categories>
         <category>🐺JAVA</category>
