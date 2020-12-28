@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2020-12-28T14:35:36.204Z</updated>
+  <updated>2020-12-28T14:42:06.445Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://frosro.github.io/2020/12/27/Dubbo%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%80/"/>
     <id>https://frosro.github.io/2020/12/27/Dubbo%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%80/</id>
     <published>2020-12-27T03:59:36.000Z</published>
-    <updated>2020-12-28T14:35:36.204Z</updated>
+    <updated>2020-12-28T14:42:06.445Z</updated>
     
     <summary type="html">
     
@@ -36,11 +36,7 @@
     </summary>
     
     
-      <category term="Dubbo" scheme="https://frosro.github.io/categories/Dubbo/"/>
-    
-      <category term="RPC" scheme="https://frosro.github.io/categories/Dubbo/RPC/"/>
-    
-      <category term="框架" scheme="https://frosro.github.io/categories/Dubbo/RPC/%E6%A1%86%E6%9E%B6/"/>
+      <category term="🐂框架" scheme="https://frosro.github.io/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"/>
     
     
       <category term="Dubbo" scheme="https://frosro.github.io/tags/Dubbo/"/>
