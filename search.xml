@@ -3,12 +3,7 @@
   <entry>
     <title>并发编程（三）</title>
     <url>/2021/01/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[<p>title: 并发编程（三）<br>categories: 🐺JAVA<br>tags: </p>
-<ul>
-<li>JAVA</li>
-<li>并发编程<br>date: 2021-01-09 17:20:30<br>cover:</li>
-</ul>
-<h3 id="三、JUC-java-util-concurrent"><a href="#三、JUC-java-util-concurrent" class="headerlink" title="三、JUC:java.util.concurrent"></a>三、JUC:java.util.concurrent</h3><h4 id="3-1-集合"><a href="#3-1-集合" class="headerlink" title="3.1 集合"></a>3.1 集合</h4><h5 id="3-1-1-BlockingQueue"><a href="#3-1-1-BlockingQueue" class="headerlink" title="3.1.1 BlockingQueue"></a>3.1.1 BlockingQueue</h5><p><strong>什么是阻塞队列？</strong></p>
+    <content><![CDATA[<h3 id="三、JUC-java-util-concurrent"><a href="#三、JUC-java-util-concurrent" class="headerlink" title="三、JUC:java.util.concurrent"></a>三、JUC:java.util.concurrent</h3><h4 id="3-1-集合"><a href="#3-1-集合" class="headerlink" title="3.1 集合"></a>3.1 集合</h4><h5 id="3-1-1-BlockingQueue"><a href="#3-1-1-BlockingQueue" class="headerlink" title="3.1.1 BlockingQueue"></a>3.1.1 BlockingQueue</h5><p><strong>什么是阻塞队列？</strong></p>
 <p>阻塞队列（BlockingQueue）是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时， 获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。</p>
 <p>阻塞队列提供了四种处理方法:</p>
 <table>
@@ -230,7 +225,7 @@
 <p>synchronized可重入，因为加锁和解锁自动进行，不必担心后是否释放锁；ReentrantLock也 可重入，但加锁和解锁需要手动进行，且次数需一样，否则其他线程无法获得锁。</p>
 </li>
 <li><p>实现</p>
-<p> synchronized是JVM实现的、而ReentrantLock是JDK实现的。说白了就是，是操作系统来实现， 还是用户自己敲代码实现。 </p>
+<p>synchronized是JVM实现的、而ReentrantLock是JDK实现的。说白了就是，是操作系统来实现， 还是用户自己敲代码实现。 </p>
 </li>
 <li><p>性能 </p>
 <p>在 Java 的 1.5 版本中，synchronized 性能不如 SDK 里面的 Lock，但 1.6 版本之后， synchronized 做了很多优化，将性能追了上来。</p>
@@ -324,6 +319,13 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoundedBuffer</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock(); </span><br><span class="line">    <span class="keyword">final</span> Condition notFull  = lock.newCondition();  </span><br><span class="line">    <span class="keyword">final</span> Condition notEmpty = lock.newCondition(); </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">final</span> Object[] items = <span class="keyword">new</span> Object[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> putptr, takeptr, count;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Object x)</span> <span class="keyword">throws</span> InterruptedException </span>&#123; </span><br><span class="line">        </span><br><span class="line">       lock.lock();     </span><br><span class="line">        <span class="keyword">try</span> &#123;    </span><br><span class="line">           <span class="keyword">while</span> (count == items.length)    </span><br><span class="line">               notFull.await();    </span><br><span class="line">            items[putptr] = x;    </span><br><span class="line">            <span class="keyword">if</span> (++putptr == items.length) putptr = <span class="number">0</span>;   </span><br><span class="line">            ++count;    </span><br><span class="line">            notEmpty.signal(); </span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;      </span><br><span class="line">            lock.unlock();    </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Object <span class="title">take</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123; </span><br><span class="line">       lock.lock();    </span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line"> 			<span class="keyword">while</span> (count == <span class="number">0</span>)   </span><br><span class="line">                notEmpty.await(); </span><br><span class="line">           Object x = items[takeptr];   </span><br><span class="line">           <span class="keyword">if</span> (++takeptr == items.length) takeptr = <span class="number">0</span>; </span><br><span class="line">           --count;      </span><br><span class="line">           notFull.signal();     </span><br><span class="line">           <span class="keyword">return</span> x;  </span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123; </span><br><span class="line">           lock.unlock();   </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>并发编程</tag>
+      </tags>
   </entry>
   <entry>
     <title>并发编程（二）</title>
