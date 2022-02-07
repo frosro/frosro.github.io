@@ -581,6 +581,19 @@
       </tags>
   </entry>
   <entry>
+    <title>SpringCloud Alibaba 之 Sentinel</title>
+    <url>/2021/01/09/SpringCloud-Alibaba-%E4%B9%8B-Sentinel/</url>
+    <content><![CDATA[<p>test</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Spring Cloud Alibaba</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并发编程（二）</title>
     <url>/2021/01/08/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h2 id="二、并发编程基础"><a href="#二、并发编程基础" class="headerlink" title="二、并发编程基础"></a>二、并发编程基础</h2><h4 id="2-1-临界资源"><a href="#2-1-临界资源" class="headerlink" title="2.1 临界资源"></a>2.1 临界资源</h4><p>临界资源是一次仅允许一个进程使用的共享资源。各进程采取互斥的方式，实现共享的资源称作临界资 源。属于临界资源的硬件有，打印机，磁带机等；软件有消息队列，变量，数组，缓冲区等。诸进程间 采取互斥方式，实现对这种资源的共享。</p>
@@ -1016,8 +1029,8 @@
       </categories>
       <tags>
         <tag>JAVA</tag>
-        <tag>锁</tag>
         <tag>synchronized</tag>
+        <tag>锁</tag>
         <tag>原理</tag>
       </tags>
   </entry>
@@ -1430,8 +1443,8 @@
       </categories>
       <tags>
         <tag>JAVA</tag>
-        <tag>面试</tag>
         <tag>Hibernate</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -1742,8 +1755,8 @@
       </categories>
       <tags>
         <tag>JAVA</tag>
-        <tag>容器</tag>
         <tag>面试</tag>
+        <tag>容器</tag>
       </tags>
   </entry>
   <entry>
@@ -2107,8 +2120,8 @@
       </categories>
       <tags>
         <tag>JAVA</tag>
-        <tag>Tomcat</tag>
         <tag>Servlet</tag>
+        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>

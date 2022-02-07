@@ -46,6 +46,35 @@
   </entry>
   
   <entry>
+    <title>SpringCloud Alibaba 之 Sentinel</title>
+    <link href="https://frosro.github.io/2021/01/09/SpringCloud-Alibaba-%E4%B9%8B-Sentinel/"/>
+    <id>https://frosro.github.io/2021/01/09/SpringCloud-Alibaba-%E4%B9%8B-Sentinel/</id>
+    <published>2021-01-09T13:27:14.000Z</published>
+    <updated>2022-02-07T22:54:13.438Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="Spring Cloud Alibaba" scheme="https://frosro.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+  </entry>
+  
+  <entry>
     <title>并发编程（二）</title>
     <link href="https://frosro.github.io/2021/01/08/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://frosro.github.io/2021/01/08/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
@@ -215,9 +244,9 @@
     
       <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
     
-      <category term="锁" scheme="https://frosro.github.io/tags/%E9%94%81/"/>
-    
       <category term="synchronized" scheme="https://frosro.github.io/tags/synchronized/"/>
+    
+      <category term="锁" scheme="https://frosro.github.io/tags/%E9%94%81/"/>
     
       <category term="原理" scheme="https://frosro.github.io/tags/%E5%8E%9F%E7%90%86/"/>
     
@@ -473,9 +502,9 @@
     
       <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
     
-      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Hibernate" scheme="https://frosro.github.io/tags/Hibernate/"/>
+    
+      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -608,37 +637,6 @@
       <category term="多线程" scheme="https://frosro.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
       <category term="并发" scheme="https://frosro.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java容器知识检验</title>
-    <link href="https://frosro.github.io/2020/07/16/java%E5%AE%B9%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/"/>
-    <id>https://frosro.github.io/2020/07/16/java%E5%AE%B9%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</id>
-    <published>2020-07-16T15:09:31.000Z</published>
-    <updated>2020-07-19T03:57:51.463Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
-    
-    
-      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
-    
-      <category term="容器" scheme="https://frosro.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
