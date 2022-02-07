@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringCloud Alibaba 之 Sentinel</title>
+    <url>/2021/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/</url>
+    <content><![CDATA[<p>test</p>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Spring Cloud Alibaba</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并发编程（三）</title>
     <url>/2021/01/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<h3 id="三、JUC-java-util-concurrent"><a href="#三、JUC-java-util-concurrent" class="headerlink" title="三、JUC:java.util.concurrent"></a>三、JUC:java.util.concurrent</h3><h4 id="3-1-集合"><a href="#3-1-集合" class="headerlink" title="3.1 集合"></a>3.1 集合</h4><h5 id="3-1-1-BlockingQueue"><a href="#3-1-1-BlockingQueue" class="headerlink" title="3.1.1 BlockingQueue"></a>3.1.1 BlockingQueue</h5><p><strong>什么是阻塞队列？</strong></p>
@@ -578,19 +591,6 @@
       <tags>
         <tag>JAVA</tag>
         <tag>并发编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringCloud Alibaba 之 Sentinel</title>
-    <url>/2021/01/09/SpringCloud-Alibaba-%E4%B9%8B-Sentinel/</url>
-    <content><![CDATA[<p>test</p>
-]]></content>
-      <categories>
-        <category>🐺JAVA</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>Spring Cloud Alibaba</tag>
       </tags>
   </entry>
   <entry>
@@ -1282,8 +1282,8 @@
       <tags>
         <tag>JAVA</tag>
         <tag>面试</tag>
-        <tag>消息队列</tag>
         <tag>Kafka</tag>
+        <tag>消息队列</tag>
       </tags>
   </entry>
   <entry>
@@ -1348,8 +1348,8 @@
       <tags>
         <tag>JAVA</tag>
         <tag>面试</tag>
-        <tag>RabbitMQ</tag>
         <tag>消息队列</tag>
+        <tag>RabbitMQ</tag>
       </tags>
   </entry>
   <entry>
