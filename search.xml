@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SpringCloud Alibaba 之 Sentinel</title>
-    <url>/2021/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/</url>
-    <content><![CDATA[<p>test</p>
+    <title>SpringCloud Alibaba 之 Sentinel （一）</title>
+    <url>/2022/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/</url>
+    <content><![CDATA[<h3 id="一、基于Sentinel的微服务限流及熔断"><a href="#一、基于Sentinel的微服务限流及熔断" class="headerlink" title="一、基于Sentinel的微服务限流及熔断"></a>一、基于Sentinel的微服务限流及熔断</h3><p>系统常见的<strong>保护策略</strong>有：<strong>服务降级</strong>、<strong>限流</strong> 和 <strong>熔断</strong>。</p>
+<h4 id="1、限流的算法"><a href="#1、限流的算法" class="headerlink" title="1、限流的算法"></a>1、限流的算法</h4><h5 id="1-1-计数器算法"><a href="#1-1-计数器算法" class="headerlink" title="1.1 计数器算法"></a>1.1 计数器算法</h5><p>​    在指定周期内累加访问次数，当访问次数到达设定的阈值时，触发限流策略，当进入下一个时间周期时进行访问次数的清零。</p>
+<p>​    缺点：存在临界问题，当两个时间段内相近时间分别出现大量请求，整体来看短时间内请求量超过了设置的阈值。</p>
+<h5 id="1-2-滑动窗口算法"><a href="#1-2-滑动窗口算法" class="headerlink" title="1.2 滑动窗口算法"></a>1.2 滑动窗口算法</h5><p>​    原理：在固定窗口中分割出多个小时间窗口，分别在每个小时间窗口中记录访问次数，然后根据时间将窗口往前滑动并删除过期的小时间窗口。最终只需要统计滑动窗口范围内的所有小时间窗口总的计数即可。</p>
+<p>​    优点：解决了计数器算法所带来的临界问题。</p>
+<p>​    使用场景：TCP网络通信协议中、Sentinel中</p>
+<h5 id="1-3-令牌桶限流算法"><a href="#1-3-令牌桶限流算法" class="headerlink" title="1.3 令牌桶限流算法"></a>1.3 令牌桶限流算法</h5><p>​    介绍：令牌桶是<strong>网络流量整形</strong>和<strong>速率限制</strong>中最常用的一种算法。</p>
+<p>​    原理：系统会以一个恒定速度往固定容量的令牌桶中放入令牌。对于每一个请求，都需要从令牌桶中获取一个令牌，如果没有令牌，则触发限流策略。</p>
+<p>​    优点：能够处理突发流量</p>
+<h5 id="1-4-漏桶限流算法"><a href="#1-4-漏桶限流算法" class="headerlink" title="1.4 漏桶限流算法"></a>1.4 漏桶限流算法</h5><p>​    作用：控制数据注入网络的速度，平滑网络上的突发流量。</p>
+<p>​    原理：内部维护一个容器，这个容器以恒定的速度出水，不管上面的水流的速度多快，漏桶水滴的流出速度始终保持不变。</p>
+<p>​    使用场景：消息中间件（不管生产者的请求量有多大，消息的处理能力取决于消费者）</p>
+<p>​    缺点：无法处理短时间内的突发流量，是一种恒定速度的限流算法。</p>
+<h4 id="2-、服务熔断与降级"><a href="#2-、服务熔断与降级" class="headerlink" title="2 、服务熔断与降级"></a>2 、服务熔断与降级</h4><p>​    服务熔断：指当某个服务提供者无法正常为服务调用者提供服务时，比如请求超时，服务异常等，为了防止整个系统出现雪崩效应，暂时将出现故障的接口隔离出来，断绝与外部接口的联系，当触发熔断之后，后续一段时间内该服务调用者的请求都会直接失败，直到目标服务恢复正常。</p>
+<p>​    服务降级：有一个参考指标，一般有 <strong>平均响应时间</strong>、<strong>异常比列</strong>、<strong>异常数量</strong> 三种。</p>
+<p>​    Sentinel提供了熔断功能</p>
+<p>​            </p>
 ]]></content>
       <categories>
         <category>🐺JAVA</category>
