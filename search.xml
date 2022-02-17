@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringCloud Alibaba 之 Sentinel（二）</title>
+    <url>/2022/02/10/SpringCloudAlibaba%E4%B9%8BSentinel-2/</url>
+    <content><![CDATA[<pre><code>**Sentinel是面向分布式服务架构的轻量级流量控制组件，主要以流量为切入点，从限流、流量整形、服务降级、系统负载保护等多个维度来帮助我们保障微服务的稳定性。**</code></pre><h3 id="1、Sentinel的特性"><a href="#1、Sentinel的特性" class="headerlink" title="1、Sentinel的特性"></a>1、Sentinel的特性</h3><ul>
+<li>丰富的应用场景</li>
+<li>实时监控</li>
+<li>开源生态支持</li>
+<li>SPI扩展点支持</li>
+</ul>
+<h3 id="2、Sentinel的组成"><a href="#2、Sentinel的组成" class="headerlink" title="2、Sentinel的组成"></a>2、Sentinel的组成</h3><ul>
+<li>核心库：不依赖任何框架/库，能够运行于所有JAVA运行时环境，同时对Dubbo、Spring Cloud 等框架也有较好的支持。</li>
+<li>控制台：基于Spring Boot开发，打包后可以直接运行，不需要额外的Tomcat等应用容器。</li>
+</ul>
+<h3 id="3、Sentinel-Dashboard的部署"><a href="#3、Sentinel-Dashboard的部署" class="headerlink" title="3、Sentinel Dashboard的部署"></a>3、Sentinel Dashboard的部署</h3><ul>
+<li>在GitHub中Sentinel的源码仓库中：<ul>
+<li>直接下载源码通过mvn clean package自己构建</li>
+<li>直接在Release页面下载已经构建好的 Jar，地址：<a href="https://github.com/alibaba/Sentinel/releases。" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/releases。</a></li>
+</ul>
+</li>
+<li>命令启动控制台</li>
+</ul>
+<h3 id="4、Sentinel的基本应用"><a href="#4、Sentinel的基本应用" class="headerlink" title="4、Sentinel的基本应用"></a>4、Sentinel的基本应用</h3><h5 id="4-1、实现限流的简单demo"><a href="#4-1、实现限流的简单demo" class="headerlink" title="4.1、实现限流的简单demo"></a>4.1、实现限流的简单demo</h5><p>引入Sentinel核心库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.csp&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;sentinel-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.7.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSomeThing</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span>(Entry entry = SphU.entry(<span class="string">"doSomething"</span>))&#123; <span class="comment">//定义一个资源来实现流控的逻辑，当请求进入			doSomething方法时，需要进行限流判断</span></span><br><span class="line">           <span class="comment">// 业务逻辑处理</span></span><br><span class="line">           System.out.println(<span class="string">"hello world"</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (BlockException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initFlowRules</span><span class="params">()</span></span>&#123; <span class="comment">// 制定限流规则</span></span><br><span class="line">       List&lt;FlowRule&gt; rulesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">       FlowRule flowRule = <span class="keyword">new</span> FlowRule();</span><br><span class="line">       flowRule.setResource(<span class="string">"doSomething"</span>); <span class="comment">// 设置需要保护的资源</span></span><br><span class="line">       flowRule.setGrade(RuleConstant.FLOW_GRADE_QPS); <span class="comment">//限流阈值类型 QPS模式或并发线程数模式</span></span><br><span class="line">       flowRule.setCount(<span class="number">20</span>); <span class="comment">//限流阈值</span></span><br><span class="line">       rulesList.add(flowRule);</span><br><span class="line">       FlowRuleManager.loadRules(rulesList);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       initFlowRules();</span><br><span class="line">       <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">           doSomeThing();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-2、资源的定义方式"><a href="#4-2、资源的定义方式" class="headerlink" title="4.2、资源的定义方式"></a>4.2、资源的定义方式</h5><ul>
+<li><pre><code class="java"><span class="comment">// 通过抛出异常的方式来定义一个资源，会抛出一个BlockException异常</span>
+<span class="keyword">try</span>(Entry entry = SphU.entry(<span class="string">"resourceName"</span>)){ <span class="comment">// resourceName可以定义为方法名称、接口名称或其他唯一标识</span>
+    <span class="comment">// 被保护的业务逻辑</span>
+}<span class="keyword">catch</span>(BlockException e){
+    <span class="comment">// 被限流</span>
+}
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+<li><pre><code class="java"> <span class="comment">// 注意： blockHandler所配置的值blockHandlerForUser会在触发限流之后调用，这个方法必须和原始方法getUserById的返回值、参数保持一致，而且需要增加BlockException参数</span>
+<span class="meta">@SentinelResource</span>(value = <span class="string">"resourceName"</span>,blockHandler = <span class="string">"blockHandlerForUser"</span>)     
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserById</span><span class="params">(String id)</span></span>{
+   <span class="comment">// 业务逻辑</span>
+}
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">blockHandlerForUser</span><span class="params">(String id, BlockException e)</span></span>{
+  <span class="comment">// 被限流后的处理方法</span>
+}
+&lt;!--￼<span class="number">3</span>--&gt;
+</code></pre>
+</li>
+</ul>
+<h6 id="4-3-1、基于并发数和QPS的流量控制"><a href="#4-3-1、基于并发数和QPS的流量控制" class="headerlink" title="4.3.1、基于并发数和QPS的流量控制"></a>4.3.1、基于并发数和QPS的流量控制</h6><ul>
+<li>并发线程数（FLOW_GRADE_THREAD）</li>
+<li>QPS （FLOW_GRADE_QPS）</li>
+</ul>
+<p><strong>并发线程数</strong>：并发线程数限流用来保护业务线程不被耗尽；Sentinel并发线程数限流就是统计当前请求的上下文线程数量，如果超出阈值，新的请求就会被拒绝。</p>
+<p><strong>QPS</strong>：QPS表示每秒的查询数，也就是一台服务器每秒能够响应的查询次数，当QPS达到限流的阈值时，就会触发限流策略。</p>
+<h6 id="4-3-2、QPS流量控制行为"><a href="#4-3-2、QPS流量控制行为" class="headerlink" title="4.3.2、QPS流量控制行为"></a>4.3.2、QPS流量控制行为</h6><ul>
+<li><p><strong>直接拒绝</strong> （CONTROL_BEHAVIOR_DEFAULT）；</p>
+<p>默认的流量控制方式，也就是请求流量超出阈值时，直接抛出一个FlowException</p>
+</li>
+<li><p><strong>Warm</strong> <strong>Up</strong>（CONTROL_BEHAVIOR_WARM_UP）；</p>
+<p>是一种冷启动方式，请求处理的数量逐步递增，并在一个预期时间之后达到允许处理请求的最大值。</p>
+</li>
+<li><p><strong>匀速排队</strong> （CONTROL_BEHAVIOR_RATE_LIMITER）;</p>
+<p>严格控制请求通过的间隔时间，让请求以匀速的速度通过，相当于前面讲的漏桶限流算法。</p>
+</li>
+<li><p><strong>冷启动</strong> + <strong>匀速排毒</strong> （CONTROL_BEHAVIOR_WARM_UP_RATE_LIMITER）；</p>
+</li>
+</ul>
+<h6 id="4-3-3、调用关系流量策略"><a href="#4-3-3、调用关系流量策略" class="headerlink" title="4.3.3、调用关系流量策略"></a>4.3.3、调用关系流量策略</h6><p>调用关系包括调用方和被调用方，调用关系流量策略就是根据不同的维度来触发流量控制。</p>
+<ul>
+<li><p><strong>根据调用方限流</strong></p>
+<p>根据请求来源进行流量控制，我们需要设置limitApp属性来设置来源信息，他有三个选项</p>
+<ol>
+<li><strong>default</strong>：表示不区分调用者，也就是任何访问调用者的请求都会进行限流统计。</li>
+<li>{<strong>some_origin_name</strong>}：设置特定的调用者，只有来自这个调用者的请求才会进行流量统计和控制。</li>
+<li><strong>other</strong>：表示针对除{<strong>some_origin_name</strong>}外的调用者进行流量控制。</li>
+</ol>
+<p>由于同一个资源可以设置多个规则，规则的生效顺序为：{<strong>some_origin_name</strong>} →other→default</p>
+</li>
+<li><p><strong>根据调用链路入口限流</strong></p>
+<p>只根据某个路口来进行流量统计</p>
+</li>
+<li><p><strong>具有关系的资源流量控制</strong>（<strong>关联流量控制</strong>）</p>
+<p>当两个资源之间存在依赖关系，我们就说这两个资源存在关联，关联流量控制就是限制其中一个资源的执行流量。</p>
+</li>
+</ul>
+<h5 id="4-4、Sentinel实现服务熔断"><a href="#4-4、Sentinel实现服务熔断" class="headerlink" title="4.4、Sentinel实现服务熔断"></a>4.4、Sentinel实现服务熔断</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initDegradeRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;DegradeRule&gt; rules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        DegradeRule degradeRule = <span class="keyword">new</span> DegradeRule();</span><br><span class="line">        degradeRule.setResource(<span class="string">"KEY"</span>);</span><br><span class="line">        degradeRule.setCount(<span class="number">10</span>);</span><br><span class="line">        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_RT); <span class="comment">// 熔断策略，支持秒级RT、秒级异常比例、分钟级异常数。默认是秒级RT。</span></span><br><span class="line">        degradeRule.setTimeWindow(<span class="number">10</span>); <span class="comment">// 熔断降级的时间窗口，单位为s。也就是触发熔断降级后多长时间内自动熔断。</span></span><br><span class="line">        degradeRule.setMinRequestAmount(<span class="number">5</span>); <span class="comment">// 触发的异常熔断最小请求数，请求数小于该值时即使异常比例超出阈值也不会触发熔断，默认值为5。</span></span><br><span class="line">        degradeRule.setRtSlowRequestAmount(<span class="number">5</span>); <span class="comment">// 在RT模式下，1s内持续多少个请求的平均RT超出阈值后触发熔断，默认值为5。</span></span><br><span class="line">        rules.add(degradeRule);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sentinel提供三种熔断策略，对于不同策略，参数的含有也不相同。</p>
+<ul>
+<li><p><strong>平均相应时间</strong>（RuleConstant.DEGRADE_GRADE_RT）：</p>
+<p>如果1s内持续进入了5个请求，对应的平均响应时间都超过了阈值（count，单位ms），那么在接下来的时间窗口内（timeWindow，单位为s）内，对这个方法的调用都会自动熔断，抛出DegradeException</p>
+</li>
+<li><p><strong>异常比列</strong>（RuleConstant.DEGRADE_GRADE_EXCEPTION_RATIO）：</p>
+<p>如果每秒资源数 ≥ minRequestAmount，并且每秒的异常总数占总通过量的比例超过阈值，则资源将进入降级状态。同样，在接下来的时间窗口内（timeWindow，单位为s）内，对这个方法的调用都会自动熔断</p>
+</li>
+<li><p><strong>异常数</strong>（RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT）:</p>
+<p>当资源最近一分钟的异常数目超过阈值之后，会触发熔断。需要注意的是，如果timeWindow小于60s，则结束熔断状态后仍然可能再进入熔断状态</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>🐺JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Spring Cloud Alibaba</tag>
+        <tag>Sentinel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringCloud Alibaba 之 Sentinel（一）</title>
     <url>/2022/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/</url>
     <content><![CDATA[<h2 id="一、基于Sentinel的微服务限流及熔断"><a href="#一、基于Sentinel的微服务限流及熔断" class="headerlink" title="一、基于Sentinel的微服务限流及熔断"></a>一、基于Sentinel的微服务限流及熔断</h2><p>系统常见的<strong>保护策略</strong>有：<strong>服务降级</strong>、<strong>限流</strong> 和 <strong>熔断</strong>。</p>
@@ -27,6 +137,7 @@
       <tags>
         <tag>JAVA</tag>
         <tag>Spring Cloud Alibaba</tag>
+        <tag>Sentinel</tag>
       </tags>
   </entry>
   <entry>
