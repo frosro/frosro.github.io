@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2022-02-17T23:37:37.666Z</updated>
+  <updated>2022-02-26T00:07:56.349Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://frosro.github.io/2022/02/10/SpringCloudAlibaba%E4%B9%8BSentinel-2/"/>
     <id>https://frosro.github.io/2022/02/10/SpringCloudAlibaba%E4%B9%8BSentinel-2/</id>
     <published>2022-02-09T22:41:47.000Z</published>
-    <updated>2022-02-17T23:37:37.666Z</updated>
+    <updated>2022-02-26T00:07:56.349Z</updated>
     
     <summary type="html">
     
@@ -36,12 +36,14 @@
     </summary>
     
     
-      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+      <category term="🐂框架" scheme="https://frosro.github.io/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"/>
     
     
       <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
     
       <category term="Spring Cloud Alibaba" scheme="https://frosro.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+      <category term="框架" scheme="https://frosro.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
     
       <category term="Sentinel" scheme="https://frosro.github.io/tags/Sentinel/"/>
     
@@ -52,7 +54,7 @@
     <link href="https://frosro.github.io/2022/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/"/>
     <id>https://frosro.github.io/2022/02/08/SpringCloudAlibaba%E4%B9%8BSentinel/</id>
     <published>2022-02-07T22:27:14.000Z</published>
-    <updated>2022-02-09T22:43:19.112Z</updated>
+    <updated>2022-02-26T00:07:04.613Z</updated>
     
     <summary type="html">
     
@@ -67,12 +69,14 @@
     </summary>
     
     
-      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+      <category term="🐂框架" scheme="https://frosro.github.io/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"/>
     
     
       <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
     
       <category term="Spring Cloud Alibaba" scheme="https://frosro.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+      <category term="框架" scheme="https://frosro.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
     
       <category term="Sentinel" scheme="https://frosro.github.io/tags/Sentinel/"/>
     
