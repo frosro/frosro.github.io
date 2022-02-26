@@ -107,8 +107,8 @@
       <tags>
         <tag>JAVA</tag>
         <tag>Spring Cloud Alibaba</tag>
-        <tag>框架</tag>
         <tag>Sentinel</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -138,8 +138,8 @@
       <tags>
         <tag>JAVA</tag>
         <tag>Spring Cloud Alibaba</tag>
-        <tag>框架</tag>
         <tag>Sentinel</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -1107,9 +1107,9 @@
         <category>🐂框架</category>
       </categories>
       <tags>
+        <tag>框架</tag>
         <tag>Dubbo</tag>
         <tag>RPC</tag>
-        <tag>框架</tag>
         <tag>分布式</tag>
       </tags>
   </entry>
