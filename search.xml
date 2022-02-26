@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringCloud Alibaba 之 Sentinel（三）</title>
+    <url>/2022/02/26/SpringCloudAlibaba%E4%B9%8BSentinel-3/</url>
+    <content><![CDATA[<h3 id="五、Spring-Cloud-集成Sentinel实践"><a href="#五、Spring-Cloud-集成Sentinel实践" class="headerlink" title="五、Spring Cloud 集成Sentinel实践"></a>五、Spring Cloud 集成Sentinel实践</h3><h4 id="1、Sentinel接入Spring-Cloud"><a href="#1、Sentinel接入Spring-Cloud" class="headerlink" title="1、Sentinel接入Spring Cloud"></a>1、Sentinel接入Spring Cloud</h4><ul>
+<li><p>创建一个基于Spring Boot的项目</p>
+</li>
+<li><p>添加Sentinel依赖包</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-sentinel<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个REST接口，并通过@SentinelResource 配置限流保护资源</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@SentinelResource</span>(value = <span class="string">"hello"</span>,blockHandler = <span class="string">"blockHandlerHello"</span>)</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello cs-go"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">blockHandlerHello</span><span class="params">(BlockException e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"被限流了"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sentinel starter 在默认情况下会为所有的HTTP服务提供限流埋点，所有如果只想对HTTP服务进行限流，那么只需要添加依赖即可，不需要修改任何代码。</li>
+<li>如果想要对特定的方法进行限流或者降级，则需要通过@SentinelResouce注解来实现限流资源的定义</li>
+<li>可以通过 SphU.entry()方法来配置资源</li>
+</ul>
+</li>
+<li><p>手动配置流控规则，可以借用Sentinel的InitFunc SPI 扩展接口来实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlowRuleInitFunc</span> <span class="keyword">implements</span> <span class="title">InitFunc</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        List&lt;FlowRule&gt; flowRuleList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        FlowRule rule = <span class="keyword">new</span> FlowRule();</span><br><span class="line">        rule.setCount(<span class="number">1</span>);</span><br><span class="line">        rule.setResource(<span class="string">"hello"</span>);</span><br><span class="line">        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);</span><br><span class="line">        rule.setLimitApp(<span class="string">"default"</span>);</span><br><span class="line">        flowRuleList.add(rule);</span><br><span class="line">        FlowRuleManager.loadRules(flowRuleList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>SPI 是扩展点机制，如果需要被Sentinel加载，要么还要在resouce目录下创建 <code>META-INF\services\com.alibaba.csp.sentinel.init.InitFunc</code>按照上述配置好后，在初次访问任何资源的时候，Sentinel就会自动加载hello资源的流控规则</strong></p>
+</li>
+<li><p>启动服务后，访问localhost:8080/say方法， 当访问频率超过设定阈值时，就会触发限流。</p>
+</li>
+</ul>
+<h4 id="2、基于Sentinel-Dashboard-来实现流控配置"><a href="#2、基于Sentinel-Dashboard-来实现流控配置" class="headerlink" title="2、基于Sentinel Dashboard 来实现流控配置"></a>2、基于Sentinel Dashboard 来实现流控配置</h4><ul>
+<li><p>启动 Sentinel Dashboard</p>
+</li>
+<li><p>在application.properties添加配置：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">spring-cloud-sentinel-sample</span></span><br><span class="line"><span class="comment"># 指的是Sentinel Dashboard的服务器地址，可以实现流控数据的监控和流控规则的分发</span></span><br><span class="line"><span class="meta">spring.cloud.sentinel.transport.dashboard</span>=<span class="string">localhost:8080</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提供一个REST接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DashboardController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 此处不需要添加任何的资源埋点，在默认情况下Sentinel Starter会对所有Http请求进行限流。</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/dash"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">dash</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello dash"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务后，此时访问 /dash接口，由于没有配置流控规则，所有不存在流控行为。</p>
+<p>集成Sentinel就配置完成了，接下来，进入Sentinel Dashboard来实现流控规则的配置</p>
+</li>
+<li><p>访问 Sentinel Dashboard的地址</p>
+</li>
+<li><p>点击”簇点链接“，点击“流控”，设置单机阈值为1</p>
+</li>
+<li><p>添加完成后，访问对应接口，当QPS超过1时，就可以看到限流的效果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">Blocked by <span class="title">Sentinel</span><span class="params">(flow limiting)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="3、自定义URL限流异常"><a href="#3、自定义URL限流异常" class="headerlink" title="3、自定义URL限流异常"></a>3、自定义URL限流异常</h4><p>在默认情况下，URL触发限流后会直接返回。</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">Blocked by Sentinel(flow limiting)</span><br></pre></td></tr></table></figure>
+
+<p>在实际应用中，大都采用 JSON 格式的数据，所以如果希望修改触发限流之后的返回结果形式，则可以通过自定义限流异常来处理，实现BlockExceptionHandler接口并重写handle方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomUrlBlockHandler</span> <span class="keyword">implements</span> <span class="title">BlockExceptionHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        httpServletResponse.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">        String message = <span class="string">"&#123;\"code\":999,\"msg\":\"访问人数过多\"&#125;"</span>;</span><br><span class="line">        httpServletResponse.getWriter().write(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一个场景时，当触发限流之后，我们希望直接跳转到一个降级页面，可以通过下面这个配置来实现</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.cloud.sentinel.block-page</span>=<span class="string">&#123;url&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4、URL-资源清洗"><a href="#4、URL-资源清洗" class="headerlink" title="4、URL 资源清洗"></a>4、URL 资源清洗</h4><p>Sentinel中的HTTP服务限流默认由Sentinel-Web-Servlet 包中的CommonFilter 来实现，从代码中可以看到，这个Filter会把每个URL 都作为不同的资源来处理。</p>
+<p>但如果是携带{id}参数的 REST 风格 API （例如：@GetMapping(“clean/{id}”)），对于每一个不同的{id}，URL 也都是不一样的，所以默认情况下 Sentinel  会把所有的URL都当作资源来进行流控。</p>
+<p>这样会导致两个问题</p>
+<ul>
+<li>限流统计的不准确，实际需求是控制clean方法总的QPS，结果统计的是每个URL的QPS。</li>
+<li>导致Sentinel中的资源数量过多，默认资源数量的阈值是6000，对于多出来的资源规则将不会生效。</li>
+</ul>
+<p>针对这个问题可以通过 UrlCleaner 接口来实现资源清洗，也就是对于/clean/{id} 这个Url我们可以统一归集到/clean/* 资源下，具体配置代码如下，实现UrlCleaner 接口，并重写clean方法即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerUrlCleaner</span> <span class="keyword">implements</span> <span class="title">UrlCleaner</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">clean</span><span class="params">(String originUrl)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtil.isEmpty(originUrl))&#123;</span><br><span class="line">            <span class="keyword">return</span> originUrl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (originUrl.startsWith(<span class="string">"/clean/"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"/clean/*"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> originUrl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六、Sentinel-集成-Nacos-实现动态流控规则"><a href="#六、Sentinel-集成-Nacos-实现动态流控规则" class="headerlink" title="六、Sentinel 集成 Nacos 实现动态流控规则"></a>六、Sentinel 集成 Nacos 实现动态流控规则</h3><p>待写入……</p>
+]]></content>
+      <categories>
+        <category>🐂框架</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Spring Cloud Alibaba</tag>
+        <tag>Sentinel</tag>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringCloud Alibaba 之 Sentinel（二）</title>
     <url>/2022/02/10/SpringCloudAlibaba%E4%B9%8BSentinel-2/</url>
     <content><![CDATA[<pre><code>**Sentinel是面向分布式服务架构的轻量级流量控制组件，主要以流量为切入点，从限流、流量整形、服务降级、系统负载保护等多个维度来帮助我们保障微服务的稳定性。**</code></pre><h3 id="1、Sentinel的特性"><a href="#1、Sentinel的特性" class="headerlink" title="1、Sentinel的特性"></a>1、Sentinel的特性</h3><ul>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frosro.github.io/"/>
-  <updated>2022-02-26T00:07:56.349Z</updated>
+  <updated>2022-02-26T00:30:42.778Z</updated>
   <id>https://frosro.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringCloud Alibaba 之 Sentinel（三）</title>
+    <link href="https://frosro.github.io/2022/02/26/SpringCloudAlibaba%E4%B9%8BSentinel-3/"/>
+    <id>https://frosro.github.io/2022/02/26/SpringCloudAlibaba%E4%B9%8BSentinel-3/</id>
+    <published>2022-02-25T23:42:50.000Z</published>
+    <updated>2022-02-26T00:30:42.778Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐂框架" scheme="https://frosro.github.io/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="Spring Cloud Alibaba" scheme="https://frosro.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+      <category term="Sentinel" scheme="https://frosro.github.io/tags/Sentinel/"/>
+    
+      <category term="框架" scheme="https://frosro.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringCloud Alibaba 之 Sentinel（二）</title>
@@ -608,37 +641,6 @@
       <category term="spring" scheme="https://frosro.github.io/tags/spring/"/>
     
       <category term="springmMVC" scheme="https://frosro.github.io/tags/springmMVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java网络知识检验</title>
-    <link href="https://frosro.github.io/2020/07/19/java%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/"/>
-    <id>https://frosro.github.io/2020/07/19/java%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</id>
-    <published>2020-07-19T06:41:47.000Z</published>
-    <updated>2020-07-19T06:46:17.009Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
-    
-    
-      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
-    
-      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="网络" scheme="https://frosro.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
