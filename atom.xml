@@ -236,60 +236,6 @@
   </entry>
   
   <entry>
-    <title>重启</title>
-    <link href="https://frosro.github.io/2020/12/23/%E9%87%8D%E5%90%AF/"/>
-    <id>https://frosro.github.io/2020/12/23/%E9%87%8D%E5%90%AF/</id>
-    <published>2020-12-23T15:28:27.000Z</published>
-    <updated>2020-12-23T15:24:24.799Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="🐟台小记" scheme="https://frosro.github.io/categories/%F0%9F%90%9F%E5%8F%B0%E5%B0%8F%E8%AE%B0/"/>
-    
-    
-      <category term="历程" scheme="https://frosro.github.io/tags/%E5%8E%86%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>转战成都</title>
-    <link href="https://frosro.github.io/2020/08/26/%E8%BD%AC%E6%88%98%E6%88%90%E9%83%BD/"/>
-    <id>https://frosro.github.io/2020/08/26/%E8%BD%AC%E6%88%98%E6%88%90%E9%83%BD/</id>
-    <published>2020-08-26T13:28:27.000Z</published>
-    <updated>2020-08-26T13:37:45.517Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="🐟台小记" scheme="https://frosro.github.io/categories/%F0%9F%90%9F%E5%8F%B0%E5%B0%8F%E8%AE%B0/"/>
-    
-    
-      <category term="历程" scheme="https://frosro.github.io/tags/%E5%8E%86%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java synchronized原理总结</title>
     <link href="https://frosro.github.io/2020/07/26/Java-synchronized%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/"/>
     <id>https://frosro.github.io/2020/07/26/Java-synchronized%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/</id>
@@ -641,6 +587,72 @@
       <category term="spring" scheme="https://frosro.github.io/tags/spring/"/>
     
       <category term="springmMVC" scheme="https://frosro.github.io/tags/springmMVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java网络知识检验</title>
+    <link href="https://frosro.github.io/2020/07/19/java%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/"/>
+    <id>https://frosro.github.io/2020/07/19/java%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</id>
+    <published>2020-07-19T06:41:47.000Z</published>
+    <updated>2020-07-19T06:46:17.009Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="网络" scheme="https://frosro.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java多线程知识检验</title>
+    <link href="https://frosro.github.io/2020/07/19/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/"/>
+    <id>https://frosro.github.io/2020/07/19/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/</id>
+    <published>2020-07-19T06:04:39.000Z</published>
+    <updated>2020-07-19T06:31:25.989Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="🐺JAVA" scheme="https://frosro.github.io/categories/%F0%9F%90%BAJAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://frosro.github.io/tags/JAVA/"/>
+    
+      <category term="锁" scheme="https://frosro.github.io/tags/%E9%94%81/"/>
+    
+      <category term="面试" scheme="https://frosro.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="多线程" scheme="https://frosro.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="并发" scheme="https://frosro.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   

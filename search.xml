@@ -1302,40 +1302,6 @@
       </tags>
   </entry>
   <entry>
-    <title>重启</title>
-    <url>/2020/12/23/%E9%87%8D%E5%90%AF/</url>
-    <content><![CDATA[<hr>
-<p>​        快到2021年了，从九月份开始到现在，大概四个月的时间了，我逐渐适应了新的环境和工作，虽然还有很多欠缺，不管是在业务上还是技术上。但这是一个不错的开始。</p>
-<p>​        接下来，我会将空闲的时间全部投入到学习中，争取来年能有更大的进步。并且会逐步恢复学习笔记的记录，记录下那些工作或者学习上的难点。</p>
-<p>​        <del>~</del>！go    </p>
-]]></content>
-      <categories>
-        <category>🐟台小记</category>
-      </categories>
-      <tags>
-        <tag>历程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>转战成都</title>
-    <url>/2020/08/26/%E8%BD%AC%E6%88%98%E6%88%90%E9%83%BD/</url>
-    <content><![CDATA[<p>2020年8月24日   星期一   晴</p>
-<p>我进入了新的工作环境，是中软的外包平安线，不可否认，这可能不是一份好工作，但工资我还是觉得较为可观，每天也不需要加班，一切都是为了生活。</p>
-<p>项目用的是我不熟悉的技术，</p>
-<p>数据库是Orcal，我觉得我可以好好学一下，毕竟这是世界上顶级的数据库。</p>
-<p>服务器不再是Tomcat，而是WebLogic，也有必要好好了解一下看。</p>
-<p>还有一些其他的东西；</p>
-<p>这个人事管理系统目前分为老版本和新版本，还有一个移动端。</p>
-<p>目前我只看到了老版本的代码，希望可以从中学到不少有用的知识。</p>
-]]></content>
-      <categories>
-        <category>🐟台小记</category>
-      </categories>
-      <tags>
-        <tag>历程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java synchronized原理总结</title>
     <url>/2020/07/26/Java-synchronized%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>我觉得并不会比他写得好：</p>
