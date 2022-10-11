@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mysql 递归查询解决方案</title>
+    <url>/2022/04/11/Mysql-%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="关于Mysql递归查询，归纳有以下几种方式："><a href="#关于Mysql递归查询，归纳有以下几种方式：" class="headerlink" title="关于Mysql递归查询，归纳有以下几种方式："></a><strong>关于Mysql递归查询，归纳有以下几种方式：</strong></h2><h4 id="1、递归CTE"><a href="#1、递归CTE" class="headerlink" title="1、递归CTE"></a><strong>1、递归CTE</strong></h4><p>如果是Mysql 8.0 以上的版本，支持递归CTE（公用表表达式），它是一个命名的临时结果集，仅在单个SQL语句(例如SELECT，INSERT，UPDATE或DELETE)的执行范围内存在。与派生表类似，CTE不作为对象存储，仅在查询执行期间持续。 与派生表不同，CTE可以是自引用(递归CTE)，也可以在同一查询中多次引用。 此外，与派生表相比，CTE提供了更好的可读性和性能。大多数的数据库都支持CTE。</p>
+<p><strong>语法</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">WITH</span> cte_name (column_list) <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">query</span></span><br><span class="line">) </span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> cte_name;</span><br><span class="line"></span><br><span class="line">1.cte_name :CTE表达式的名称。</span><br><span class="line"></span><br><span class="line">2.column_list:列名列表。</span><br><span class="line"></span><br><span class="line">3.query:定义CTE结果集的<span class="keyword">Select</span>查询语句</span><br><span class="line"></span><br><span class="line">注：查询中的列数必须与column_list中的列数相同。 如果省略column_list，CTE将使用定义CTE的查询的列列表,上面的语法只能在 MySQL8<span class="number">.0</span> 以上版本才支持。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、自定义函数"><a href="#2、自定义函数" class="headerlink" title="2、自定义函数"></a><strong>2、自定义函数</strong></h4><p>而在Mysql 8.0以下的版本中，可以使用 <strong>自定义函数</strong> 来实现递归查询</p>
+<p><strong>以向下递归为例 ，讲解自定义函数写法的同时，讲解递归</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">delimiter $$ </span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> <span class="keyword">if</span> <span class="keyword">exists</span> get_child_list$$ </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> get_child_list(in_id <span class="built_in">varchar</span>(<span class="number">10</span>)) <span class="keyword">returns</span> <span class="built_in">varchar</span>(<span class="number">1000</span>) </span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">    <span class="keyword">declare</span> ids <span class="built_in">varchar</span>(<span class="number">1000</span>) <span class="keyword">default</span> <span class="string">''</span>; </span><br><span class="line">    <span class="keyword">declare</span> tempids <span class="built_in">varchar</span>(<span class="number">1000</span>); </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">set</span> tempids = in_id; </span><br><span class="line">    while tempids is not null <span class="keyword">do</span> </span><br><span class="line">        <span class="keyword">set</span> ids = <span class="keyword">CONCAT_WS</span>(<span class="string">','</span>,ids,tempids); </span><br><span class="line">        <span class="keyword">select</span> <span class="keyword">GROUP_CONCAT</span>(<span class="keyword">id</span>) <span class="keyword">into</span> tempids <span class="keyword">from</span> dept <span class="keyword">where</span> FIND_IN_SET(pid,tempids)&gt;<span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">while</span>; </span><br><span class="line">    return ids; </span><br><span class="line"><span class="keyword">end</span>  </span><br><span class="line">$$ </span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+
+<p>（1） delimiter $$ ，用于定义结束符。我们知道 MySQL 默认的结束符为分号，表明指令结束并执行。但是在函数体中，有时我们希望遇到分号不结束，因此需要暂时把结束符改为一个随意的其他值。我这里设置为 $$，意思是遇到 $$ 才结束，并执行当前语句。</p>
+<p>（2）drop function if exists get_child_list$$ 。若函数 get_child_list 已经存在了，则先删除它。注意这里需要用 当前自定义的结束符 $$ 来结束并执行语句。 因为，这里需要和下边的函数体单独区分开来。</p>
+<p>（3）create function get_child_list 创建函数。并且参数传入一个根节点的子节点id，需要注意一定要注明参数的类型和长度，如这里是 varchar(10)。returns varchar(1000) 用来定义返回值参数类型。</p>
+<p>（4）begin 和 end 中间包围的就是函数体。用来写具体的逻辑。</p>
+<p>（5）declare 用来声明变量，并且可以用 default 设置默认值。</p>
+<p>这里定义的 ids 即作为整个函数的返回值，是用来拼接成最终我们需要的以逗号分隔的递归串的。</p>
+<p>而 tempids 是为了记录下边 while 循环中临时生成的所有子节点以逗号拼接成的字符串。</p>
+<p>（6） set 用来给变量赋值。此处把传进来的根节点赋值给 tempids 。</p>
+<p>（7） while do … end while; 循环语句，循环逻辑包含在内。注意，end while 末尾需要加上分号。</p>
+<p>循环体内，先用 CONCAT_WS 函数把最终结果 ids 和 临时生成的 tempids 用逗号拼接起来。</p>
+<p>然后以 FIND_IN_SET(pid,tempids)&gt;0 为条件，遍历在 tempids 中的所有 pid ，寻找以此为父节点的所有子节点 id ，并且通过 GROUP_CONCAT(id) into tempids 把这些子节点 id 都用逗号拼接起来，并覆盖更新 tempids 。</p>
+<p>等下次循环进来时，就会再次拼接 ids ，并再次查找所有子节点的所有子节点。循环往复，一层一层的向下递归遍历子节点。直到判断 tempids 为空，说明所有子节点都已经遍历完了，就结束整个循环。</p>
+<p>这里，用 ‘1000’ 来举例，即是：（参看图1的表数据关系）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一次循环：</span><br><span class="line">  tempids&#x3D;1000  ids&#x3D;1000    tempids&#x3D;1001,1002 (1000的所有子节点)</span><br><span class="line">第二次循环：</span><br><span class="line">  tempids&#x3D;1001,1002  ids&#x3D;1000,1001,1002  tempids&#x3D;1003,1004,1005,1013 (1001和1002的所有子节点)</span><br><span class="line">第三次循环：</span><br><span class="line">  tempids&#x3D;1003,1004,1005,1013 </span><br><span class="line">  ids&#x3D;1000,1001,1002,1003,1004,1005,1013 </span><br><span class="line">  tempids&#x3D;1003和1004和1005及1013的所有子节点</span><br><span class="line">...</span><br><span class="line">最后一次循环，因找不到子节点，tempids&#x3D;null，就结束循环。</span><br></pre></td></tr></table></figure>
+
+<p>（8）return ids; 用于把 ids 作为函数返回值返回。</p>
+<p>（9）函数体结束以后，记得用结束符 $$ 来结束整个逻辑，并执行。</p>
+<p>（10）最后别忘了，把结束符重新设置为默认的结束符分号 。</p>
+<p><strong>手动实现递归查询（向上递归）</strong></p>
+<p>相对于向下递归来说，向上递归比较简单。</p>
+<p>因为向下递归时，每一层递归一个父节点都对应多个子节点。</p>
+<p>而向上递归时，每一层递归一个子节点只对应一个父节点，关系比较单一。</p>
+<p>同样的，我们可以定义一个函数 get_parent_list 来获取根节点的所有父节点。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">delimiter $$ </span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> <span class="keyword">if</span> <span class="keyword">exists</span> get_parent_list$$ </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> get_parent_list(in_id <span class="built_in">varchar</span>(<span class="number">10</span>)) <span class="keyword">returns</span> <span class="built_in">varchar</span>(<span class="number">1000</span>) </span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">    <span class="keyword">declare</span> ids <span class="built_in">varchar</span>(<span class="number">1000</span>); </span><br><span class="line">    <span class="keyword">declare</span> tempid <span class="built_in">varchar</span>(<span class="number">10</span>); </span><br><span class="line">     </span><br><span class="line">    <span class="keyword">set</span> tempid = in_id; </span><br><span class="line">    while tempid is not null <span class="keyword">do</span> </span><br><span class="line">        <span class="keyword">set</span> ids = <span class="keyword">CONCAT_WS</span>(<span class="string">','</span>,ids,tempid); </span><br><span class="line">        <span class="keyword">select</span> pid <span class="keyword">into</span> tempid <span class="keyword">from</span> dept <span class="keyword">where</span> <span class="keyword">id</span>=tempid; </span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">while</span>; </span><br><span class="line">    return ids; </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">$$ </span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong></p>
+<p>我们用到了 group_concat 函数来拼接字符串。但是，需要注意它是有长度限制的，默认为 1024 字节。可以通过 <code>show variables like &quot;group_concat_max_len&quot;;</code> 来查看。</p>
+<p>注意，单位是字节，不是字符。在 MySQL 中，单个字母占1个字节，而我们平时用的 utf-8下，一个汉字占3个字节。</p>
+<p>这个对于递归查询还是非常致命的。因为一般递归的话，关系层级都比较深，很有可能超过最大长度。（尽管一般拼接的都是数字字符串，即单字节）</p>
+<p>所以，我们有两种方法解决这个问题：</p>
+<ol>
+<li>修改 MySQL 配置文件 my.cnf ，增加 <code>group_concat_max_len = 102400 #你要的最大长度</code> 。</li>
+<li>执行以下任意一个语句。<code>SET GLOBAL group_concat_max_len=102400;</code> 或者 <code>SET SESSION group_concat_max_len=102400;</code></li>
+</ol>
+<p>他们的区别在于，global是全局的，任意打开一个新的会话都会生效，但是注意，已经打开的当前会话并不会生效。而 session 是只会在当前会话生效，其他会话不生效。</p>
+<p>共同点是，它们都会在 MySQL 重启之后失效，以配置文件中的配置为准。所以，建议直接修改配置文件。102400 的长度一般也够用了。假设一个id的长度为10个字节，也能拼上一万个id了。</p>
+<p>除此之外，使用 group_concat 函数还有一个限制，就是不能同时使用 limit 。</p>
+<h4 id="3、SQL语句"><a href="#3、SQL语句" class="headerlink" title="3、SQL语句"></a><strong>3、SQL语句</strong></h4><p>另外。还有一种方式，思路与第二种类似，也是使用 <strong>GROUP_CONCAT</strong> 和  <strong>FIND_IN_SET</strong> 函数，看起来更简单，但是有点难以理解。</p>
+<p><strong>查询当前单位的所有下级单位</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATA.uid <span class="keyword">FROM</span>(</span><br><span class="line">      <span class="keyword">SELECT</span></span><br><span class="line">      @ids <span class="keyword">AS</span> _ids,</span><br><span class="line">      (</span><br><span class="line">      <span class="keyword">SELECT</span> @ids := <span class="keyword">GROUP_CONCAT</span>(uid)</span><br><span class="line">      <span class="keyword">FROM</span> corpinfo</span><br><span class="line">      <span class="keyword">WHERE</span> FIND_IN_SET(ubelong, @ids)</span><br><span class="line">      ) <span class="keyword">AS</span> cids,</span><br><span class="line">      @l := @l+<span class="number">1</span> <span class="keyword">AS</span> <span class="keyword">level</span></span><br><span class="line">      <span class="keyword">FROM</span> corpinfo, (<span class="keyword">SELECT</span> @ids := (参数) , @l := <span class="number">0</span> ) b</span><br><span class="line">      <span class="keyword">WHERE</span> @ids <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">      ) <span class="keyword">ID</span>, corpinfo <span class="keyword">DATA</span></span><br><span class="line"><span class="keyword">WHERE</span> FIND_IN_SET(DATA.uid, ID._ids)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">level</span>,uid</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询所有上级单位</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> uid <span class="keyword">FROM</span>(</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">        @<span class="keyword">id</span> <span class="keyword">AS</span> _id,</span><br><span class="line">        ( <span class="keyword">SELECT</span> @<span class="keyword">id</span> := ubelong</span><br><span class="line">        <span class="keyword">FROM</span> corpinfo</span><br><span class="line">        <span class="keyword">WHERE</span> uid = @<span class="keyword">id</span></span><br><span class="line">        ) <span class="keyword">AS</span> _pid,</span><br><span class="line">        @l := @l+<span class="number">1</span> <span class="keyword">as</span> <span class="keyword">level</span></span><br><span class="line">        <span class="keyword">FROM</span> corpinfo,</span><br><span class="line">        (<span class="keyword">SELECT</span> @<span class="keyword">id</span> := (参数), @l := <span class="number">0</span> ) b</span><br><span class="line">        <span class="keyword">WHERE</span> @<span class="keyword">id</span> &gt; <span class="number">0</span></span><br><span class="line">        ) <span class="keyword">ID</span>, corpinfo <span class="keyword">DATA</span></span><br><span class="line">        <span class="keyword">WHERE</span> ID._id = DATA.uid</span><br><span class="line">   <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">level</span> <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4、代码实现"><a href="#4、代码实现" class="headerlink" title="4、代码实现"></a><strong>4、代码实现</strong></h4>]]></content>
+      <categories>
+        <category>🐻数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>Mysql</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringCloud Alibaba 之 Sentinel（三）</title>
     <url>/2022/02/26/SpringCloudAlibaba%E4%B9%8BSentinel-3/</url>
     <content><![CDATA[<h3 id="五、Spring-Cloud-集成Sentinel实践"><a href="#五、Spring-Cloud-集成Sentinel实践" class="headerlink" title="五、Spring Cloud 集成Sentinel实践"></a>五、Spring Cloud 集成Sentinel实践</h3><h4 id="1、Sentinel接入Spring-Cloud"><a href="#1、Sentinel接入Spring-Cloud" class="headerlink" title="1、Sentinel接入Spring Cloud"></a>1、Sentinel接入Spring Cloud</h4><ul>
