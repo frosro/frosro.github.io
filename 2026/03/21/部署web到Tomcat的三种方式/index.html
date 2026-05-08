@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>部署web到Tomcat的三种方式 | BETTER LATE THAN NEVER</title><meta name="author" content="Frosro"><meta name="copyright" content="Frosro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这里简单的记录tomcat的部署方式： 一、 直接将 web 项目文件（一般是复制生成的war包）复制到tomcat的webapps目录中 ； 二、在tomcat中的conf目录下的server.xml文件中，在节点中添加一个context，具体为： 1&lt;Context Path&#x3D;&quot;&quot; Docbase&#x3D;&quot;目标目录位置&quot; Debug&#x3D;&quot;0&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署web到Tomcat的三种方式">
+<meta property="og:url" content="https://frosro.github.io/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="BETTER LATE THAN NEVER">
+<meta property="og:description" content="这里简单的记录tomcat的部署方式： 一、 直接将 web 项目文件（一般是复制生成的war包）复制到tomcat的webapps目录中 ； 二、在tomcat中的conf目录下的server.xml文件中，在节点中添加一个context，具体为： 1&lt;Context Path&#x3D;&quot;&quot; Docbase&#x3D;&quot;目标目录位置&quot; Debug&#x3D;&quot;0&amp;qu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frosro.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-03-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-28T14:11:14.375Z">
+<meta property="article:author" content="Frosro">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="Tomcat">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frosro.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "部署web到Tomcat的三种方式",
+  "url": "https://frosro.github.io/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/",
+  "image": "https://frosro.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-03-21T00:00:00.000Z",
+  "dateModified": "2026-04-28T14:11:14.375Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Frosro",
+      "url": "https://frosro.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://frosro.github.io/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '部署web到Tomcat的三种方式',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="BETTER LATE THAN NEVER" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BETTER LATE THAN NEVER</span></a><a class="nav-page-title" href="/"><span class="site-name">部署web到Tomcat的三种方式</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">部署web到Tomcat的三种方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-21T00:00:00.000Z" title="发表于 2026-03-21 08:00:00">2026-03-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-28T14:11:14.375Z" title="更新于 2026-04-28 22:11:14">2026-04-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>这里简单的记录tomcat的部署方式：</p>
+<p>一、 直接将 web 项目文件（一般是复制生成的war包）复制到tomcat的webapps目录中 ；</p>
+<p>二、在tomcat中的conf目录下的server.xml文件中，在<Host/>节点中添加一个context，具体为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">Path</span>=<span class="string">&quot;&quot;</span> <span class="attr">Docbase</span>=<span class="string">&quot;目标目录位置&quot;</span> <span class="attr">Debug</span>=<span class="string">&quot;0&quot;</span> <span class="attr">Privileged</span>=<span class="string">&quot;True&quot;</span> <span class="attr">Reloadable</span>=<span class="string">&quot;True&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 Reloadable= “true” 这个属性是指tomcat在运行状态下会自动检测应用程序的WEB-INF/classes和WEB-INF/lib目录下的class文件，如果监测到有class文件有改动，服务器自动加载新的web应用程序，可以在不重起tomcat的情况下改变应用程序，也就是热部署；</p>
+<p>一般我们会在开发阶段将Reloadable属性设为true，有助于调试servlet和其它的class文件，但是由于这样会增加服务器的运行负荷，损耗系统性能，在项目运行阶段建议将它设为false。</p>
+<p>三、直接将编译后的项目复制到webapps中，直接访问</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://frosro.github.io">Frosro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://frosro.github.io/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">https://frosro.github.io/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://frosro.github.io" target="_blank">BETTER LATE THAN NEVER</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JAVA/">JAVA</a><a class="post-meta__tags" href="/tags/Tomcat/">Tomcat</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/17/Nacos-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" title="Nacos-服务启动无法获取配置问题排查与解决"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Nacos-服务启动无法获取配置问题排查与解决</div></div><div class="info-2"><div class="info-item-1">一、问题背景在微服务架构中，Nacos 作为配置中心和服务注册中心被广泛使用。但在生产环境中，我们遇到了应用启动时无法从 Nacos 获取配置的问题，导致应用启动失败。本文将详细分析该问题的排查过程、根本原因及解决方案。 二、问题描述1、问题现象Java 应用在启动时连接 Nacos 超时，导致配置读取失败、应用启动异常。具体表现为：  应用启动过程卡顿约 15 秒 随后报错读取配置失败，提示”【XXX】配置文件is empty” 日志中显示连接 Nacos 超时  2、环境信息 JDK 版本：JDK 8 Spring Cloud Alibaba 版本：2.2.0.RELEASE Nacos 版本：2.4.1 操作系统：CentOS 7  三、问题排查过程1、初步排查首先，我们检查了 Nacos 服务端的运行状态和网络连通性： 12345678# 检查 Nacos 服务是否正常运行ps -ef | grep nacos# 检查 Nacos 服务端口是否正常监听netstat -anp | grep 8848# 检查应用服务器到 Nacos 服务器的网络连通性telnet &lt;...</div></div></div></a><a class="pagination-related" href="/2026/01/22/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="并发编程（三）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">并发编程（三）</div></div><div class="info-2"><div class="info-item-1">三、JUC:java.util.concurrent3.1 集合3.1.1 BlockingQueue什么是阻塞队列？ 阻塞队列（BlockingQueue）是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时， 获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。 阻塞队列提供了四种处理方法:    方法\处理方式 抛出异常 返回特殊值 一直阻塞 超时退出    插入方法 add(e) offer(e) put(e) offer(e,time,unit)   移除方法 remove() poll() take() poll(time,unit)   检查方法 element() peek() 不可用 不可用    异常：是指当阻塞队列满时候，再往队列里插入元素，会抛出IllegalStateException(“Queue full”)异常。当队列为空时，从队列里获取元素时会抛出NoSu...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/09/servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="servlet学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-09</div><div class="info-item-2">servlet学习笔记</div></div><div class="info-2"><div class="info-item-1">1.Tomcat主要在程序中做了些什么？1.1  创建socket监听在对应的端口 1.2  维护一个线程池 1.3  当有TCP连接时分配一个线程来处理 1.4  从TCP连接中读取数据 1.5  按照HTTP协议解析数据 1.6  将解析后的数据包封装到request对象中 1.7  按照web.xml的映射关系找到对应的Servlet类 1.8  将最后的执行结果response组装成HTTP协议格式的数据包 1.9  重新通过TCP返回给客户端 2.访问servlet 的过程2.1  connector 负责监听端⼝,当有链接进来时分配线程并实例化HttpllProcessor对数据进⾏ HTTP协议解析,然后将请求交给其所在的engine即Catalina来处理,处理的是域名对应的ip和 端⼝8080 ,注意localhost任然没被使⽤  2.2  engine将从HTTP请求头中获取host参数⽤于选择⼀个匹配的Host   处理的是主机名 localhost(Host可以配置多个,即你可以在⼀台电脑上部署两个完全不相关的web项⽬例如jd 和百度),此时处理的是域...</div></div></div></a><a class="pagination-related" href="/2021/10/18/Java-synchronized%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/" title="Java synchronized原理总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-18</div><div class="info-item-2">Java synchronized原理总结</div></div><div class="info-2"><div class="info-item-1">我觉得并不会比他写得好： 点击此处 </div></div></div></a><a class="pagination-related" href="/2025/06/05/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA%E4%B8%8E%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="事务传播行为与事务隔离级别"><img class="cover" src="https://i.loli.net/2020/06/04/AEgik9weUVq4zYD.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-05</div><div class="info-item-2">事务传播行为与事务隔离级别</div></div><div class="info-2"><div class="info-item-1">事务事务读传播行为· 保证同一个事务中PROPAGATION_REQUIRED支持当前事务，如果不存在，就新建一个（默认）PROPAGATION_SUPPORTS支持当前事务，如果不存在，就不适用事务PROPAGATION_MANDATORY 支持当前事务，如果不存在，抛出异常 · 保证没有在同一个事务中PROPAGATION_REQUIRES_NEW如果有事务存在，挂起当前事务，创建一个新的事务PROPAGATION_NOT_SUPPORTED 以非事务方式运行，如果有事务存在，挂起当前事务PROPAGATION_NEVER 以非事务方式运行，如果有事务存在，抛出异常PROPAGATION_NESTED 如果当前事务存在，则嵌套事务执行 事务隔离级别DEFAULT这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别； 未提交读（read uncommitted）：​    事务的修改，即使当前事务没有被提交，对其他事务而言也是可见的。事务可以读取未提交的数据，也称为脏读。这个级别会导致很多问题，性能上也不比其他级别好多少，一般...</div></div></div></a><a class="pagination-related" href="/2025/11/25/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="并发编程（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-25</div><div class="info-item-2">并发编程（二）</div></div><div class="info-2"><div class="info-item-1">二、并发编程基础2.1 临界资源临界资源是一次仅允许一个进程使用的共享资源。各进程采取互斥的方式，实现共享的资源称作临界资 源。属于临界资源的硬件有，打印机，磁带机等；软件有消息队列，变量，数组，缓冲区等。诸进程间 采取互斥方式，实现对这种资源的共享。 123456public class Counter &#123;     protected long count = 0;     public void add(long value)&#123;                  this.count = this.count + value;         &#125;&#125;  2.2 线程安全2.2.1 基本概念竞态条件：当两个线程竞争同一资源时，如果对资源的访问顺序敏感，就称存在竞态条件。导致竞态条件发生的代码区称作临界区。在临界区中使用适当的同步就可以避免竞态条件，如使用synchronized或者加锁机制。 线程安全：允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。 2.2.2 对象的安全局部基本类型变量局部变量存储在线程自己...</div></div></div></a><a class="pagination-related" href="/2023/05/17/java-Mybatis-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java Mybatis 知识检验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-17</div><div class="info-item-2">java Mybatis 知识检验</div></div><div class="info-2"><div class="info-item-1">1. MyBatis 中 #{}和** ${}**的区别是什么？#{}是预编译处理，${}是字符替换。 在使用 #{}时，MyBatis 会将 SQL 中的 #{}替换成“?”，配合 PreparedStatement 的 set 方法赋值，这样可以有效的防止 SQL 注入，保证程序的运行安全。 2. MyBatis 有几种分页方式？分页方式：逻辑分页和物理分页。 逻辑分页： 使用 MyBatis 自带的 RowBounds 进行分页，它是一次性查询很多数据，然后在数据中再进行检索。 物理分页： 自己手写 SQL 分页或使用分页插件 PageHelper，去数据库查询指定条数的分页数据的形式。 3. RowBounds 是一次性查询全部结果吗？为什么？RowBounds 表面是在“所有”数据中检索数据，其实并非是一次性查询出所有数据，因为 MyBatis 是对 jdbc 的封装，在 jdbc 驱动中有一个 Fetch Size 的配置，它规定了每次最多从数据库查询多少条数据，假如你要查询更多数据，它会在你执行 next()的时候，去查询更多的数据。就好比你去自动取款机取 1000...</div></div></div></a><a class="pagination-related" href="/2021/03/01/CAS%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB/" title="CAS和Synchronized的区别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-01</div><div class="info-item-2">CAS和Synchronized的区别</div></div><div class="info-2"><div class="info-item-1">更多资源：https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md 一、CAS概念： CAS（Compare And Swap ) 或（ Compare-and-Set ）是乐观锁的一种实现方式，是一种轻量级锁。JAVA1.5开始引入了CAS，JUC下很多工具类都是基于CAS。  CAS的实现方式: CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。当多个线程同时尝试使用CAS更新一个变量时，任何时候只有一个线程可以更新成功，若更新失败，线程会重新进入循环再次进行尝试。  CAS带来的问题ABA问题 ：ABA问题是指在CAS操作时，其他线程将变量值A改为了B，但是又被改回了A，等到本线程使用期望值A与当前变量进行比较时，发现变量A没有变，于是CAS就将A值进行了交换操作，但是实际上该值已经被其他线程改变过，这与乐观锁的设计思想不符合。ABA问题的解决思路是，每次变量更新的时候把变量的版本号加1，...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Frosro</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%99%BB%E5%BD%95%E8%AF%B7%E6%B1%82%E5%A7%8B%E7%BB%8810%E7%A7%92%E4%B8%AD%E6%96%AD%E7%9A%84%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" title="记一次登录请求始终10秒中断的生产问题">记一次登录请求始终10秒中断的生产问题</a><time datetime="2026-05-08T13:55:03.000Z" title="发表于 2026-05-08 21:55:03">2026-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/18/OAuth-2-0-%E4%B8%8E-OIDC-OpenID-Connect-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记">OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记</a><time datetime="2026-04-18T15:10:55.000Z" title="发表于 2026-04-18 23:10:55">2026-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/Nacos-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" title="Nacos-服务启动无法获取配置问题排查与解决">Nacos-服务启动无法获取配置问题排查与解决</a><time datetime="2026-04-17T12:00:00.000Z" title="发表于 2026-04-17 20:00:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="部署web到Tomcat的三种方式">部署web到Tomcat的三种方式</a><time datetime="2026-03-21T00:00:00.000Z" title="发表于 2026-03-21 08:00:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/22/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="并发编程（三）">并发编程（三）</a><time datetime="2026-01-22T15:00:00.000Z" title="发表于 2026-01-22 23:00:00">2026-01-22</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Frosro</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

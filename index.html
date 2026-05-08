@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>BETTER LATE THAN NEVER - frosro</title><meta name="author" content="Frosro"><meta name="copyright" content="Frosro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="BETTER LATE THAN NEVER">
+<meta property="og:url" content="https://frosro.github.io/index.html">
+<meta property="og:site_name" content="BETTER LATE THAN NEVER">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frosro.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Frosro">
+<meta property="article:tag" content="JAVA\JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frosro.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "BETTER LATE THAN NEVER",
+  "alternateName": [
+    "frosro",
+    "frosro.github.io"
+  ],
+  "url": "https://frosro.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://frosro.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'BETTER LATE THAN NEVER',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="BETTER LATE THAN NEVER" type="application/atom+xml">
+</head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BETTER LATE THAN NEVER</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">BETTER LATE THAN NEVER</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/05/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%99%BB%E5%BD%95%E8%AF%B7%E6%B1%82%E5%A7%8B%E7%BB%8810%E7%A7%92%E4%B8%AD%E6%96%AD%E7%9A%84%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" title="记一次登录请求始终10秒中断的生产问题">记一次登录请求始终10秒中断的生产问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-08T13:55:03.000Z" title="发表于 2026-05-08 21:55:03">2026-05-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%92%80%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/">💀生产问题</a></span></div><div class="content">记一次 登录 10 秒请求中断的排查过程：从现象到根因1. 问题描述在一个基于 Spring Cloud 的微服务架构系统中，遇到了一个诡异的登录问题：  现象：用户在前端登录页面点击登录，请求始终在 10 秒 后中断，导致登录失败。 前端配置：前端设置的超时时间是 60 秒，理论上不应该在 10 秒报错。 后端状态：后端的登录接口被其他服务通过 Feign 调用时，一切正常，没有报错。 异常信息：在 Gateway 网关层发现了异常日志：1reactor.netty.http.client.PrematureCloseException: Connection prematurely closed BEFORE response    2. 初步排查：排除业务代码与 Feign 调用2.1 为什么不是 Feign 的问题？首先，我们确认了 Feign 接口本身是正常的。因为其他服务调用该接口时能够成功返回，说明后端的业务逻辑、数据库查询以及 Feign 客户端的配置（如超时时间、熔断策略）在服务间通信链路上是没有问题的。 2.2 为什么不是业务处理慢？虽然登录逻辑可能涉及鉴权、...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/18/OAuth-2-0-%E4%B8%8E-OIDC-OpenID-Connect-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记">OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-18T15:10:55.000Z" title="发表于 2026-04-18 23:10:55">2026-04-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">一、OAuth 2.0 授权码模式 vs. 实际登录场景1、标准的 OAuth 2.0 授权码模式 定义：OAuth 2.0 是一个授权框架，解决的是“委托授权”问题（即：应用 A 能否访问用户在应用 B 的数据）。 核心产物：Access Token（访问令牌）。 Token 生成者：必须由授权服务器（如微信、Google）生成。 原因：资源服务器只信任授权服务器。如果由第三方（客户端）自己生成，资源服务器无法验证其真伪，安全体系将崩溃。   Token 持有者：第三方应用（客户端）。 Token 用途：第三方应用拿着 Token 去访问资源服务器的接口。  2、实际企业登录场景（混合模式） 场景描述：公司新买的网站 P 接入公司统一登录平台。 网站 P 通过 OAuth 2.0 获取 code。 用 code 换取用户信息。 网站 P 自己生成 Token，建立本地会话。   定性：这属于“基于 OAuth 2.0 的身份认证 + 本地会话管理”。 前半段是标准的 OAuth 2.0（解决“你是谁”）。 后半段是业务逻辑（解决“在自家网站如何保持登录状态”）。   为什么第三...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/17/Nacos-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" title="Nacos-服务启动无法获取配置问题排查与解决">Nacos-服务启动无法获取配置问题排查与解决</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-17T12:00:00.000Z" title="发表于 2026-04-17 20:00:00">2026-04-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%92%80%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/">💀生产问题</a></span></div><div class="content">一、问题背景在微服务架构中，Nacos 作为配置中心和服务注册中心被广泛使用。但在生产环境中，我们遇到了应用启动时无法从 Nacos 获取配置的问题，导致应用启动失败。本文将详细分析该问题的排查过程、根本原因及解决方案。 二、问题描述1、问题现象Java 应用在启动时连接 Nacos 超时，导致配置读取失败、应用启动异常。具体表现为：  应用启动过程卡顿约 15 秒 随后报错读取配置失败，提示”【XXX】配置文件is empty” 日志中显示连接 Nacos 超时  2、环境信息 JDK 版本：JDK 8 Spring Cloud Alibaba 版本：2.2.0.RELEASE Nacos 版本：2.4.1 操作系统：CentOS 7  三、问题排查过程1、初步排查首先，我们检查了 Nacos 服务端的运行状态和网络连通性： 12345678# 检查 Nacos 服务是否正常运行ps -ef | grep nacos# 检查 Nacos 服务端口是否正常监听netstat -anp | grep 8848# 检查应用服务器到 Nacos 服务器的网络连通性telnet &lt;...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="部署web到Tomcat的三种方式">部署web到Tomcat的三种方式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-21T00:00:00.000Z" title="发表于 2026-03-21 08:00:00">2026-03-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">这里简单的记录tomcat的部署方式： 一、 直接将 web 项目文件（一般是复制生成的war包）复制到tomcat的webapps目录中 ； 二、在tomcat中的conf目录下的server.xml文件中，在节点中添加一个context，具体为： 1&lt;Context Path=&quot;&quot; Docbase=&quot;目标目录位置&quot; Debug=&quot;0&quot; Privileged=&quot;True&quot; Reloadable=&quot;True&quot;&gt;&lt;/Context&gt;  这里的 Reloadable= “true” 这个属性是指tomcat在运行状态下会自动检测应用程序的WEB-INF/classes和WEB-INF/lib目录下的class文件，如果监测到有class文件有改动，服务器自动加载新的web应用程序，可以在不重起tomcat的情况下改变应用程序，也就是热部署； 一般我们会在开发阶段将Reloadable属性设为true，有助于调试servlet和其它的class文件，但是由于这样会...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/22/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="并发编程（三）">并发编程（三）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-22T15:00:00.000Z" title="发表于 2026-01-22 23:00:00">2026-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">三、JUC:java.util.concurrent3.1 集合3.1.1 BlockingQueue什么是阻塞队列？ 阻塞队列（BlockingQueue）是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时， 获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。 阻塞队列提供了四种处理方法:    方法\处理方式 抛出异常 返回特殊值 一直阻塞 超时退出    插入方法 add(e) offer(e) put(e) offer(e,time,unit)   移除方法 remove() poll() take() poll(time,unit)   检查方法 element() peek() 不可用 不可用    异常：是指当阻塞队列满时候，再往队列里插入元素，会抛出IllegalStateException(“Queue full”)异常。当队列为空时，从队列里获取元素时会抛出NoSu...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/11/25/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="并发编程（二）">并发编程（二）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-25T07:30:00.000Z" title="发表于 2025-11-25 15:30:00">2025-11-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">二、并发编程基础2.1 临界资源临界资源是一次仅允许一个进程使用的共享资源。各进程采取互斥的方式，实现共享的资源称作临界资 源。属于临界资源的硬件有，打印机，磁带机等；软件有消息队列，变量，数组，缓冲区等。诸进程间 采取互斥方式，实现对这种资源的共享。 123456public class Counter &#123;     protected long count = 0;     public void add(long value)&#123;                  this.count = this.count + value;         &#125;&#125;  2.2 线程安全2.2.1 基本概念竞态条件：当两个线程竞争同一资源时，如果对资源的访问顺序敏感，就称存在竞态条件。导致竞态条件发生的代码区称作临界区。在临界区中使用适当的同步就可以避免竞态条件，如使用synchronized或者加锁机制。 线程安全：允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。 2.2.2 对象的安全局部基本类型变量局部变量存储在线程自己...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/29/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" title="并发编程（一）">并发编程（一）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T22:30:00.000Z" title="发表于 2025-09-29 06:30:00">2025-09-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">一、并发编程入门1.1 线程1.1.1进程和线程进程进程： 进程指正在运行的程序，进程拥有一个完整的、私有的基本运行资源集合。通常，每个进程都有 自己的内存空间。 进程往往被看作是程序或应用的代名词，然而，用户看到的一个单独的应用程序实际上可能是一组相互 协作的进程集合。 为了便于进程之间的通信，大多数操作系统都支持进程间通信（IPC），如pipes 和sockets。IPC不仅支持同一系统上的通信，也支持不同的系统。IPC通信方式包括管道（包括无名管道和命名管道）、 消息队列、信号量、共享存储、Socket、Streams等方式，其中  Socket和Streams支持不同主机上的两个进程IPC。 线程： 线程有时也被称为轻量级的进程。进程和线程都提供了一个执行环境，但创建一个新的线程比创建一个新的进程需要的资源要少。 线程是在进程中存在的 — 每个进程最少有一个线程。线程共享进程的资源，包括内存和打开的文件。这样提高了效率，但潜在的问题就是线程间的通信。 多线程的执行是Java平台的一个基本特征。每个应用都至少有一个线程 – 或几个，如果算上“系 统”线程的话，比如内存管理和...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/08/02/%E5%AE%B9%E5%99%A8%E5%B0%8F%E8%AE%B0/" title="容器小记">容器小记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-02T06:00:00.000Z" title="发表于 2025-08-02 14:00:00">2025-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">容器中的设计模式： 迭代器模式；[例子：容器循环所使用的 Iterator 迭代器] 设配器模式：简单的说就是将原本两个不相干的类联系起来（类似于充电器，连接插座和用电器，将电压变成电器匹配的量级）；[例子：Arrays.asList() 将数组转换成List]  默认长度 &amp; 扩容大小： List      默认大小 默认扩容 备注    ArrayList 10 原来的1.5倍 由数组实现，因此支持快速随机访问；扩容操作需要将原数组整个复制到新数组中，代价很高；删除元素是将删除index后的元素复制到index的位置，代价很高；   Vector  原来的2倍 与ArrayList相似，但是使用了synchronized进行同步，是线程安全的   得到一个线程 安全的ArrayList替代方案：  ①   Collections.synchronizedList()    ②   concurrent 并发包下的 CopyOnWriteArrayList 类 CopyOnWriteArrayList : 写操作在一个复制的数组上进行，读操作还是在原始数组中进行，读写分...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/06/05/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA%E4%B8%8E%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="事务传播行为与事务隔离级别"><img class="post-bg" src="https://i.loli.net/2020/06/04/AEgik9weUVq4zYD.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="事务传播行为与事务隔离级别"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/06/05/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA%E4%B8%8E%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="事务传播行为与事务隔离级别">事务传播行为与事务隔离级别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-06-05T13:30:00.000Z" title="发表于 2025-06-05 21:30:00">2025-06-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">事务事务读传播行为· 保证同一个事务中PROPAGATION_REQUIRED支持当前事务，如果不存在，就新建一个（默认）PROPAGATION_SUPPORTS支持当前事务，如果不存在，就不适用事务PROPAGATION_MANDATORY 支持当前事务，如果不存在，抛出异常 · 保证没有在同一个事务中PROPAGATION_REQUIRES_NEW如果有事务存在，挂起当前事务，创建一个新的事务PROPAGATION_NOT_SUPPORTED 以非事务方式运行，如果有事务存在，挂起当前事务PROPAGATION_NEVER 以非事务方式运行，如果有事务存在，抛出异常PROPAGATION_NESTED 如果当前事务存在，则嵌套事务执行 事务隔离级别DEFAULT这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别； 未提交读（read uncommitted）：​    事务的修改，即使当前事务没有被提交，对其他事务而言也是可见的。事务可以读取未提交的数据，也称为脏读。这个级别会导致很多问题，性能上也不比其他级别好多少，一般...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/09/servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="servlet学习笔记">servlet学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-04-08T21:00:00.000Z" title="发表于 2025-04-09 05:00:00">2025-04-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1.Tomcat主要在程序中做了些什么？1.1  创建socket监听在对应的端口 1.2  维护一个线程池 1.3  当有TCP连接时分配一个线程来处理 1.4  从TCP连接中读取数据 1.5  按照HTTP协议解析数据 1.6  将解析后的数据包封装到request对象中 1.7  按照web.xml的映射关系找到对应的Servlet类 1.8  将最后的执行结果response组装成HTTP协议格式的数据包 1.9  重新通过TCP返回给客户端 2.访问servlet 的过程2.1  connector 负责监听端⼝,当有链接进来时分配线程并实例化HttpllProcessor对数据进⾏ HTTP协议解析,然后将请求交给其所在的engine即Catalina来处理,处理的是域名对应的ip和 端⼝8080 ,注意localhost任然没被使⽤  2.2  engine将从HTTP请求头中获取host参数⽤于选择⼀个匹配的Host   处理的是主机名 localhost(Host可以配置多个,即你可以在⼀台电脑上部署两个完全不相关的web项⽬例如jd 和百度),此时处理的是域...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Frosro</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%99%BB%E5%BD%95%E8%AF%B7%E6%B1%82%E5%A7%8B%E7%BB%8810%E7%A7%92%E4%B8%AD%E6%96%AD%E7%9A%84%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" title="记一次登录请求始终10秒中断的生产问题">记一次登录请求始终10秒中断的生产问题</a><time datetime="2026-05-08T13:55:03.000Z" title="发表于 2026-05-08 21:55:03">2026-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/18/OAuth-2-0-%E4%B8%8E-OIDC-OpenID-Connect-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记">OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记</a><time datetime="2026-04-18T15:10:55.000Z" title="发表于 2026-04-18 23:10:55">2026-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/Nacos-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" title="Nacos-服务启动无法获取配置问题排查与解决">Nacos-服务启动无法获取配置问题排查与解决</a><time datetime="2026-04-17T12:00:00.000Z" title="发表于 2026-04-17 20:00:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="部署web到Tomcat的三种方式">部署web到Tomcat的三种方式</a><time datetime="2026-03-21T00:00:00.000Z" title="发表于 2026-03-21 08:00:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/22/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="并发编程（三）">并发编程（三）</a><time datetime="2026-01-22T15:00:00.000Z" title="发表于 2026-01-22 23:00:00">2026-01-22</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">🐂框架</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%9F%E5%8F%B0%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">🐟台小记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%BAJAVA/"><span class="card-category-list-name">🐺JAVA</span><span class="card-category-list-count">28</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">🐻数据库</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%92%80%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/"><span class="card-category-list-name">💀生产问题</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Gateway/" style="font-size: 1.1em; color: #999">Gateway</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">原理</a> <a href="/tags/Lambda/" style="font-size: 1.1em; color: #999">Lambda</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.1em; color: #999">反射</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 1.1em; color: #999">面试题</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">基础</a> <a href="/tags/Tomcat/" style="font-size: 1.2em; color: #999da3">Tomcat</a> <a href="/tags/springCloud/" style="font-size: 1.1em; color: #999">springCloud</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">多线程</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E5%BE%AA%E7%8E%AF/" style="font-size: 1.1em; color: #999">循环</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">网络</a> <a href="/tags/Redis/" style="font-size: 1.1em; color: #999">Redis</a> <a href="/tags/OAuth-2-0/" style="font-size: 1.1em; color: #999">OAuth 2.0</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 1.2em; color: #999da3">容器</a> <a href="/tags/RPC/" style="font-size: 1.1em; color: #999">RPC</a> <a href="/tags/spring/" style="font-size: 1.1em; color: #999">spring</a> <a href="/tags/Zookeeper/" style="font-size: 1.1em; color: #999">Zookeeper</a> <a href="/tags/Kafka/" style="font-size: 1.1em; color: #999">Kafka</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">事务</a> <a href="/tags/synchronized/" style="font-size: 1.1em; color: #999">synchronized</a> <a href="/tags/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" style="font-size: 1.2em; color: #999da3">生产问题</a> <a href="/tags/Servlet/" style="font-size: 1.1em; color: #999">Servlet</a> <a href="/tags/%E9%94%81/" style="font-size: 1.3em; color: #99a1ac">锁</a> <a href="/tags/springBoot/" style="font-size: 1.1em; color: #999">springBoot</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 1.1em; color: #999">递归</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 1.1em; color: #999">分布式</a> <a href="/tags/springmMVC/" style="font-size: 1.1em; color: #999">springmMVC</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 1.2em; color: #999da3">消息队列</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 1.1em; color: #999">历史</a> <a href="/tags/Mysql/" style="font-size: 1.2em; color: #999da3">Mysql</a> <a href="/tags/Spring-Cloud-Alibaba/" style="font-size: 1.5em; color: #99a9bf">Spring Cloud Alibaba</a> <a href="/tags/Hibernate/" style="font-size: 1.1em; color: #999">Hibernate</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/OIDC/" style="font-size: 1.1em; color: #999">OIDC</a> <a href="/tags/Dubbo/" style="font-size: 1.1em; color: #999">Dubbo</a> <a href="/tags/RabbitMQ/" style="font-size: 1.1em; color: #999">RabbitMQ</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 1.4em; color: #99a5b6">框架</a> <a href="/tags/Mybatis/" style="font-size: 1.1em; color: #999">Mybatis</a> <a href="/tags/Sentinel/" style="font-size: 1.3em; color: #99a1ac">Sentinel</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">36</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-08T14:23:19.947Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Frosro</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

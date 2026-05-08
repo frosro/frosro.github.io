@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>BETTER LATE THAN NEVER - frosro</title><meta name="author" content="Frosro"><meta name="copyright" content="Frosro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="BETTER LATE THAN NEVER">
+<meta property="og:url" content="https://frosro.github.io/page/2/index.html">
+<meta property="og:site_name" content="BETTER LATE THAN NEVER">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frosro.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Frosro">
+<meta property="article:tag" content="JAVA\JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frosro.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://frosro.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'BETTER LATE THAN NEVER',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="BETTER LATE THAN NEVER" type="application/atom+xml">
+</head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BETTER LATE THAN NEVER</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">BETTER LATE THAN NEVER</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/14/java%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java网络知识检验">java网络知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-14T12:00:00.000Z" title="发表于 2024-12-14 20:00:00">2024-12-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. http 响应码 301 和 302 代表的是什么？有什么区别？301：永久重定向。 302：暂时重定向。 它们的区别是，301 对搜索引擎优化（SEO）更加有利；302 有被提示为网络拦截的风险。 2. forward 和 redirect 的区别？forward 是转发 和 redirect 是重定向： ·    地址栏 url 显示：foward url 不会发生改变，redirect url 会发生改变； ·    数据共享：forward 可以共享 request 里的数据，redirect 不能共享； ·    效率：forward 比 redirect 效率高。 3. 简述 tcp 和 udp的区别？tcp 和 udp 是 OSI 模型中的运输层中的协议。tcp 提供可靠的通信传输，而 udp 则常被用于让广播和细节控制交给应用的通信传输。 两者的区别大致如下： ·    tcp 面向连接，udp 面向非连接即发送数据前不需要建立链接； ·    tcp 提供可靠的服务（数据传输），udp 无法保证； ·    tcp 面向字节流，udp 面向报文； ·   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/18/java%E5%AE%B9%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java容器知识检验">java容器知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-10-17T19:30:00.000Z" title="发表于 2024-10-18 03:30:00">2024-10-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">18. Java 容器都有哪些？Java 容器分为 Collection 和 Map 两大类，其下又有很多子类，如下所示： ·    Collection ·    List o  ArrayList o  LinkedList o  Vector o  Stack ·    Set o  HashSet o  LinkedHashSet o  TreeSet ·    Map ·    HashMap o  LinkedHashMap ·    TreeMap ·    ConcurrentHashMap ·    Hashtable 19. Collection 和 Collections 有什么区别？·    Collection 是一个集合接口，它提供了对集合对象进行基本操作的通用接口方法，所有集合都是它的子类，比如 List、Set 等。 ·    Collections 是一个包装类，包含了很多静态方法，不能被实例化，就像一个工具类，比如提供的排序方法： Collections. sort(list)。 20. List、Set、*Map *之间的区别是什么？List...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/08/21/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java多线程知识检验">java多线程知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-21T03:00:00.000Z" title="发表于 2024-08-21 11:00:00">2024-08-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. 并行和并发有什么区别？·    并行：多个处理器或多核处理器同时处理多个任务。 ·    并发：多个任务在同一个 CPU 核上，按细分的时间片轮流(交替)执行，从逻辑上来看那些任务是同时执行。 如下图：  并发 = 两个队列和一台咖啡机。 并行 = 两个队列和两台咖啡机。 2. 线程和进程的区别？一个程序下至少有一个进程，一个进程下至少有一个线程，一个进程下也可以有多个线程来增加程序的执行速度。 3. 守护线程是什么？守护线程是运行在后台的一种特殊进程。它独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件。在 Java 中垃圾回收线程就是特殊的守护线程。 4. 创建线程有哪几种方式？创建线程有三种方式： ·    继承 Thread 重写 run 方法； ·    实现 Runnable 接口； ·    实现 Callable 接口。 5. 说一下 runnable 和 callable 有什么区别？runnable 没有返回值，callable 可以拿到有返回值，callable 可以看作是 runnable 的补充。 6. 线程有哪些状态？线程的状态： ·...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/06/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java基础知识检验">java基础知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-06-24T10:30:00.000Z" title="发表于 2024-06-24 18:30:00">2024-06-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. JDK 和 JRE 有什么区别？·    JDK：Java Development Kit 的简称，Java 开发工具包，提供了 Java 的开发环境和运行环境。 ·    JRE：Java Runtime Environment 的简称，Java 运行环境，为 Java 的运行提供了所需环境。 具体来说 JDK 其实包含了 JRE，同时还包含了编译 Java 源码的编译器 Javac，还包含了很多 Java 程序调试和分析的工具。简单来说：如果你需要运行 Java 程序，只需安装 JRE 就可以了，如果你需要编写 Java 程序，需要安装 JDK。 2. == 和 equals 的区别是什么？== 解读 对于基本类型和引用类型 == 的作用效果是不同的，如下所示： ·    基本类型：比较的是值是否相同； ·    引用类型：比较的是引用是否相同； 代码示例： 12345678910111213String x = &quot;string&quot;;String y = &quot;string&quot;;String z = new String(&quot;st...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/04/28/java-springBoot-springCloud-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java[springBoot/springCloud]知识检验">java[springBoot/springCloud]知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-27T18:00:00.000Z" title="发表于 2024-04-28 02:00:00">2024-04-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. 什么是 spring boot？spring boot 是为 spring 服务的，是用来简化新 spring 应用的初始搭建以及开发过程的。 2. 为什么要用 spring boot？•    配置简单•    独立运行•    自动装配•    无代码生成和 xml 配置•    提供应用监控•    易上手•    提升开发效率 3. spring boot 配置文件有哪几种类型？它们有什么区别？配置文件有 . properties 格式和 . yml 格式，它们主要的区别是书法风格不同。. properties 配置如下：spring. RabbitMQ. port=5672. yml 配置如下：spring: RabbitMQ:     port: 5672​    . yml 格式不支持 @PropertySource 注解导入。 4. spring boot 有哪些方式可以实现热部署？•    使用 devtools 启动热部署，添加 devtools 库，在配置文件中把 spring. devtools. restart. enabled 设置为 true；...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/01/java-spring-springMVC-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java[spring/springMVC]知识检验">java[spring/springMVC]知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-01T01:30:00.000Z" title="发表于 2024-03-01 09:30:00">2024-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. 为什么要使用 spring？·    spring 提供 ioc 技术，容器会帮你管理依赖的对象，从而不需要自己创建和管理依赖对象了，更轻松的实现了程序的解耦。 ·    spring 提供了事务支持，使得事务操作变的更加方便。 ·    spring 提供了面向切片编程，这样可以更方便的处理某一类的问题。 ·    更方便的框架集成，spring 可以很方便的集成其他框架，比如 MyBatis、hibernate 等。 2. 解释一下什么是 aop？aop 是面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。 简单来说就是统一处理某一“切面”（类）的问题的编程思想，比如统一处理日志、异常等。 3. 解释一下什么是 ioc？ioc：Inversionof Control（中文：控制反转）是 spring 的核心，对于 spring 框架来说，就是由 spring 来负责控制对象的生命周期和对象间的关系。 简单来说，控制指的是当前对象对内部成员的控制权；控制反转指的是，这种控制权不由当前对象管理了，由其他（类,第三方容器）来管理。 4. sprin...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/03/java-Zookeeper-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java Zookeeper 知识检验">java Zookeeper 知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-03T09:00:00.000Z" title="发表于 2024-01-03 17:00:00">2024-01-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. zookeeper 是什么？zookeeper 是一个分布式的，开放源码的分布式应用程序协调服务，是 google chubby 的开源实现，是 hadoop 和 hbase 的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。 2. zookeeper 都有哪些功能？·    集群管理：监控节点存活状态、运行请求等。 ·    主节点选举：主节点挂掉了之后可以从备用的节点开始新一轮选主，主节点选举说的就是这个选举的过程，使用 zookeeper 可以协助完成这个过程。 ·    分布式锁：zookeeper 提供两种锁：独占锁、共享锁。独占锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。 ·    命名服务：在分布式系统中，通过使用命名服务，客户端应用能够根据指定名字来获取资源或服务的地址，提供者等信息。 3. zookeeper 有几种部署模式？zookeeper 有三种部署模式： ·  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/07/java-Redis-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java Redis 知识检验">java Redis 知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-06T16:30:00.000Z" title="发表于 2023-11-07 00:30:00">2023-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. Redis 是什么？都有哪些使用场景？Redis 是一个使用 C 语言开发的高速缓存数据库。 Redis 使用场景： ·    记录帖子点赞数、点击数、评论数； ·    缓存近期热帖； ·    缓存文章详情信息； ·    记录用户会话信息。 2. Redis 有哪些功能？·    数据缓存功能 ·    分布式锁的功能 ·    支持数据持久化 ·    支持事务 ·    支持消息队列 3. Redis 和 memcache 有什么区别？·    存储方式不同：memcache 把数据全部存在内存之中，断电后会挂掉，数据不能超过内存大小；Redis 有部份存在硬盘上，这样能保证数据的持久性。 ·    数据支持类型：memcache 对数据类型支持相对简单；Redis 有复杂的数据类型。 ·    使用底层模型不同：它们之间底层实现方式，以及与客户端之间通信的应用协议不一样，Redis 自己构建了 vm 机制，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求。 ·    value 值大小不同：Redis 最大可以达到 512mb；memcache 只有...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/10/java-RabbitMQ-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java RabbitMQ 知识检验">java RabbitMQ 知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-10T00:00:00.000Z" title="发表于 2023-09-10 08:00:00">2023-09-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. RabbitMQ 的使用场景有哪些？·    抢购活动，削峰填谷，防止系统崩塌。 ·    延迟信息处理，比如 10 分钟之后给下单未付款的用户发送邮件提醒。 ·    解耦系统，对于新增的功能可以单独写模块扩展，比如用户确认评价之后，新增了给用户返积分的功能，这个时候不用在业务代码里添加新增积分的功能，只需要把新增积分的接口订阅确认评价的消息队列即可，后面再添加任何功能只需要订阅对应的消息队列即可。 2. RabbitMQ 有哪些重要的角色？RabbitMQ 中重要的角色有：生产者、消费者和代理： ·    生产者：消息的创建者，负责创建和推送数据到消息服务器； ·    消费者：消息的接收方，用于处理数据和确认消息； ·    代理：就是 RabbitMQ 本身，用于扮演“快递”的角色，本身不生产消息，只是扮演“快递”的角色。 3. RabbitMQ 有哪些重要的组件？·    ConnectionFactory（连接管理器）：应用程序与Rabbit之间建立连接的管理器，程序代码中使用。 ·    Channel（信道）：消息推送使用的通道。 ·    Exchange...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/14/java-Mysql-%E7%9F%A5%E8%AF%86%E6%A3%80%E9%AA%8C/" title="java Mysql 知识检验">java Mysql 知识检验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-14T07:30:00.000Z" title="发表于 2023-07-14 15:30:00">2023-07-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%F0%9F%90%BAJAVA/">🐺JAVA</a></span></div><div class="content">1. 数据库的三范式是什么？·    第一范式：强调的是列的原子性，即数据库表的每一列都是不可分割的原子数据项。 ·    第二范式：要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性。 ·    第三范式：任何非主属性不依赖于其它非主属性。 2. 一张自增表里面总共有 7 条数据，删除了最后 2 条数据，重启 MySQL 数据库，又插入了一条数据，此时 id 是几？·    表类型如果是 MyISAM ，那 id 就是 8。 ·    表类型如果是 InnoDB，那 id 就是 6。 InnoDB 表只会把自增主键的最大 id 记录在内存中，所以重启之后会导致最大 id 丢失。 3. 如何获取当前数据库版本？使用 select version() 获取当前 MySQL 数据库版本。 4. 说一下 ACID 是什么？·    Atomicity（原子性）：一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复（Rollback）到事务开始前的状态，就像这个事务从来没...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Frosro</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%99%BB%E5%BD%95%E8%AF%B7%E6%B1%82%E5%A7%8B%E7%BB%8810%E7%A7%92%E4%B8%AD%E6%96%AD%E7%9A%84%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" title="记一次登录请求始终10秒中断的生产问题">记一次登录请求始终10秒中断的生产问题</a><time datetime="2026-05-08T13:55:03.000Z" title="发表于 2026-05-08 21:55:03">2026-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/18/OAuth-2-0-%E4%B8%8E-OIDC-OpenID-Connect-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记">OAuth 2.0 与 OIDC (OpenID Connect) 学习笔记</a><time datetime="2026-04-18T15:10:55.000Z" title="发表于 2026-04-18 23:10:55">2026-04-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/Nacos-%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" title="Nacos-服务启动无法获取配置问题排查与解决">Nacos-服务启动无法获取配置问题排查与解决</a><time datetime="2026-04-17T12:00:00.000Z" title="发表于 2026-04-17 20:00:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/%E9%83%A8%E7%BD%B2web%E5%88%B0Tomcat%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="部署web到Tomcat的三种方式">部署web到Tomcat的三种方式</a><time datetime="2026-03-21T00:00:00.000Z" title="发表于 2026-03-21 08:00:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/22/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="并发编程（三）">并发编程（三）</a><time datetime="2026-01-22T15:00:00.000Z" title="发表于 2026-01-22 23:00:00">2026-01-22</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%82%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">🐂框架</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%9F%E5%8F%B0%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">🐟台小记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%BAJAVA/"><span class="card-category-list-name">🐺JAVA</span><span class="card-category-list-count">28</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%90%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">🐻数据库</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%F0%9F%92%80%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/"><span class="card-category-list-name">💀生产问题</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Gateway/" style="font-size: 1.1em; color: #999">Gateway</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">原理</a> <a href="/tags/Lambda/" style="font-size: 1.1em; color: #999">Lambda</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.1em; color: #999">反射</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 1.1em; color: #999">面试题</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">基础</a> <a href="/tags/Tomcat/" style="font-size: 1.2em; color: #999da3">Tomcat</a> <a href="/tags/springCloud/" style="font-size: 1.1em; color: #999">springCloud</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">多线程</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E5%BE%AA%E7%8E%AF/" style="font-size: 1.1em; color: #999">循环</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">网络</a> <a href="/tags/Redis/" style="font-size: 1.1em; color: #999">Redis</a> <a href="/tags/OAuth-2-0/" style="font-size: 1.1em; color: #999">OAuth 2.0</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 1.2em; color: #999da3">容器</a> <a href="/tags/RPC/" style="font-size: 1.1em; color: #999">RPC</a> <a href="/tags/spring/" style="font-size: 1.1em; color: #999">spring</a> <a href="/tags/Zookeeper/" style="font-size: 1.1em; color: #999">Zookeeper</a> <a href="/tags/Kafka/" style="font-size: 1.1em; color: #999">Kafka</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">事务</a> <a href="/tags/synchronized/" style="font-size: 1.1em; color: #999">synchronized</a> <a href="/tags/%E7%94%9F%E4%BA%A7%E9%97%AE%E9%A2%98/" style="font-size: 1.2em; color: #999da3">生产问题</a> <a href="/tags/Servlet/" style="font-size: 1.1em; color: #999">Servlet</a> <a href="/tags/%E9%94%81/" style="font-size: 1.3em; color: #99a1ac">锁</a> <a href="/tags/springBoot/" style="font-size: 1.1em; color: #999">springBoot</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 1.1em; color: #999">递归</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 1.1em; color: #999">分布式</a> <a href="/tags/springmMVC/" style="font-size: 1.1em; color: #999">springmMVC</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 1.2em; color: #999da3">消息队列</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 1.1em; color: #999">历史</a> <a href="/tags/Mysql/" style="font-size: 1.2em; color: #999da3">Mysql</a> <a href="/tags/Spring-Cloud-Alibaba/" style="font-size: 1.5em; color: #99a9bf">Spring Cloud Alibaba</a> <a href="/tags/Hibernate/" style="font-size: 1.1em; color: #999">Hibernate</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/OIDC/" style="font-size: 1.1em; color: #999">OIDC</a> <a href="/tags/Dubbo/" style="font-size: 1.1em; color: #999">Dubbo</a> <a href="/tags/RabbitMQ/" style="font-size: 1.1em; color: #999">RabbitMQ</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 1.4em; color: #99a5b6">框架</a> <a href="/tags/Mybatis/" style="font-size: 1.1em; color: #999">Mybatis</a> <a href="/tags/Sentinel/" style="font-size: 1.3em; color: #99a1ac">Sentinel</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">36</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-08T14:23:19.947Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Frosro</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
